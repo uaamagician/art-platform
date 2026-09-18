@@ -12,7 +12,20 @@
           "package_name": "com.example.art_platform"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "966703401686-7dn9ebivridjps6ohk38sc3jfqrvl43h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.art_platform",
+            "certificate_hash": "e07551696e731c01f9b03e9e5fcd702c8bb63ebe"
+          }
+        },
+        {
+          "client_id": "966703401686-qda6r7g249aekg7bl4d9q31ufg5vpfpd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBtF5erMELjAwPKXztqFZTtuj_oGQmxP8I"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "966703401686-qda6r7g249aekg7bl4d9q31ufg5vpfpd.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "966703401686-vo3p7hhm642omhiqmsegnksphlp5rkpd.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.artPlatform"
+              }
+            }
+          ]
         }
       }
     }

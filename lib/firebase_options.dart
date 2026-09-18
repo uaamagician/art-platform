@@ -53,6 +53,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '966703401686',
     projectId: 'art-platform-a2f95',
     storageBucket: 'art-platform-a2f95.firebasestorage.app',
+    androidClientId: '966703401686-7dn9ebivridjps6ohk38sc3jfqrvl43h.apps.googleusercontent.com',
+    iosClientId: '966703401686-vo3p7hhm642omhiqmsegnksphlp5rkpd.apps.googleusercontent.com',
     iosBundleId: 'com.example.artPlatform',
   );
   static const FirebaseOptions web = FirebaseOptions(
@@ -71,6 +73,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '966703401686',
     projectId: 'art-platform-a2f95',
     storageBucket: 'art-platform-a2f95.firebasestorage.app',
+    androidClientId: '966703401686-7dn9ebivridjps6ohk38sc3jfqrvl43h.apps.googleusercontent.com',
+    iosClientId: '966703401686-vo3p7hhm642omhiqmsegnksphlp5rkpd.apps.googleusercontent.com',
     iosBundleId: 'com.example.artPlatform',
   );
 
