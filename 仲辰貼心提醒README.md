@@ -40,7 +40,8 @@ flutter doctor
 # 1. 自動前往桌面如果你要自己改地方也可以
 ```bash
 cd "$env:USERPROFILE\Desktop"
-```bash
+```
+
 
 # 2. 下載專案到桌面
 ```bash
