@@ -7,15 +7,41 @@
 
 - Flutter SDK(https://docs.flutter.dev/get-started/install)
 - 若要測試 iOS：需要 Mac + Xcode
-- 若要測試 Android：需要 Android Studio（要有 Android SDK）
+- 若要測試 Android：需要 Android Studio（要有 Android SDK） (https://developer.android.com/studio)
 
 安裝完成後確認下環境沒問題就能pull了：
+
+
+按下鍵盤 Win + R，輸入 powershell 並按 Enter。
+貼上執行：
 
 ```bash
 flutter doctor
 ```
+只要都有打勾就可以了
+
 
 ## 取得專案
+
+# 1. 自動前往桌面如果你要自己改地方也可以
+cd "$env:USERPROFILE\Desktop"
+
+# 2. 下載專案到桌面
+git clone https://github.com/uaamagician/art-platform.git
+
+# 3. 進入專案並下載相依套件
+cd art-platform
+flutter pub get
+
+第三步：開啟專案（二選一）
+看你習慣用哪個編譯器
+VS Code：
+打開 VS Code，點選左上角 File → Open Folder...
+選 art-platform 就好
+Android Studio：
+打開 Android Studio，點選 Open
+選桌面上的 art-platform 資料夾
+
 
 ```bash
 git clone https://github.com/uaamagician/art-platform.git
