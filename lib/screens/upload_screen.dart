@@ -74,11 +74,14 @@ class _UploadScreenState extends State<UploadScreen> {
       final post = Post(
         id: '',
         userId: user.uid,
+        userName: user.displayName ?? '',
+        userPhotoUrl: user.photoURL ?? '',
         imageUrl: imageUrl,
         title: _titleController.text.trim(),
         description: _descriptionController.text.trim(),
         category: _selectedCategory!,
         tags: _selectedTags.toList(),
+        likesCount: 0,
         createdAt: null,
       );
 
@@ -166,16 +169,7 @@ class _UploadScreenState extends State<UploadScreen> {
           borderRadius: BorderRadius.circular(12),
         ),
         child: _previewBytes == null
-            ? const Center(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Icon(Icons.add_photo_alternate_outlined, size: 40),
-                    SizedBox(height: 8),
-                    Text('點擊選擇圖片'),
-                  ],
-                ),
-              )
+            ? const Center(child: Text('點擊選擇圖片'))
             : ClipRRect(
                 borderRadius: BorderRadius.circular(12),
                 child: Image.memory(_previewBytes!, fit: BoxFit.cover),
@@ -191,7 +185,6 @@ class _UploadScreenState extends State<UploadScreen> {
         child: Wrap(
           children: [
             ListTile(
-              leading: const Icon(Icons.photo_library_outlined),
               title: const Text('從相簿選擇'),
               onTap: () {
                 Navigator.pop(context);
@@ -199,7 +192,6 @@ class _UploadScreenState extends State<UploadScreen> {
               },
             ),
             ListTile(
-              leading: const Icon(Icons.camera_alt_outlined),
               title: const Text('拍照'),
               onTap: () {
                 Navigator.pop(context);
