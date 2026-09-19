@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../services/auth_service.dart';
+import 'upload_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -17,6 +18,12 @@ class HomeScreen extends StatelessWidget {
             onPressed: () => AuthService().signOut(),
           ),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => Navigator.of(context).push(
+          MaterialPageRoute(builder: (context) => const UploadScreen()),
+        ),
+        child: const Icon(Icons.add_a_photo_outlined),
       ),
       body: Center(
         child: Column(

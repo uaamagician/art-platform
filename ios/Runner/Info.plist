@@ -37,6 +37,10 @@
 	<string>966703401686-vo3p7hhm642omhiqmsegnksphlp5rkpd.apps.googleusercontent.com</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>需要使用相機以拍攝要上傳的作品圖片</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>需要存取相簿以選擇要上傳的作品圖片</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
