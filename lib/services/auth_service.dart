@@ -1,3 +1,4 @@
+import 'firestore_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -43,7 +44,7 @@ class AuthService {
   }
 
   Future<void> _createUserProfileIfNotExists(User user) async {
-    final docRef = FirebaseFirestore.instance.collection('users').doc(user.uid);
+    final docRef = appFirestore.collection('users').doc(user.uid);
     final doc = await docRef.get();
     if (!doc.exists) {
       await docRef.set({
