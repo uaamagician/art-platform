@@ -1,131 +1,223 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'dart:async';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 import '../models/post.dart';
-import '../services/firestore_service.dart';
-import '../widgets/post_card.dart';
-import 'post_detail_screen.dart';
+import '../services/post_service.dart';
+import '../widgets/auth_guard.dart';
+import '../widgets/content_filter_sheet.dart';
+import '../widgets/post_grid.dart';
+
+enum FeedMode { following, recommended }
 
 class HomeFeedScreen extends StatefulWidget {
-  const HomeFeedScreen({super.key});
+  final FeedMode mode;
+  final ValueChanged<FeedMode> onSwitchMode;
+
+  const HomeFeedScreen({
+    super.key,
+    required this.mode,
+    required this.onSwitchMode,
+  });
 
   @override
-  State<HomeFeedScreen> createState() => _HomeFeedScreenState();
+  State<HomeFeedScreen> createState() => HomeFeedScreenState();
 }
 
-class _HomeFeedScreenState extends State<HomeFeedScreen>
-    with SingleTickerProviderStateMixin {
-  late final TabController _tabController;
-  String _searchQuery = '';
+class HomeFeedScreenState extends State<HomeFeedScreen> {
+  final _service = PostService();
+  final _scrollController = ScrollController();
+  StreamSubscription<User?>? _authSub;
+
+  List<Post>? _posts;
+  int _followingCount = 0;
+  Object? _error;
+  bool _loading = true;
 
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 3, vsync: this);
+    _authSub = FirebaseAuth.instance.authStateChanges().listen((_) => refresh());
   }
 
   @override
   void dispose() {
-    _tabController.dispose();
+    _authSub?.cancel();
+    _scrollController.dispose();
     super.dispose();
   }
 
-  List<Post> _filterPosts(List<Post> posts) {
-    if (_searchQuery.isEmpty) return posts;
-    final query = _searchQuery.toLowerCase();
-    return posts.where((post) {
-      return post.title.toLowerCase().contains(query) ||
-          post.userName.toLowerCase().contains(query) ||
-          post.tags.any((tag) => tag.toLowerCase().contains(query));
-    }).toList();
+  void scrollToTop() {
+    if (!_scrollController.hasClients) return;
+    _scrollController.animateTo(
+      0,
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeOut,
+    );
+  }
+
+  Future<void> refresh({bool silent = false}) async {
+    if (!silent && mounted && _posts == null) {
+      setState(() {
+        _loading = true;
+        _error = null;
+      });
+    }
+    try {
+      final user = FirebaseAuth.instance.currentUser;
+      List<Post> posts;
+      var followingCount = 0;
+      if (widget.mode == FeedMode.following) {
+        if (user == null) {
+          posts = [];
+        } else {
+          final feed = await _service.fetchFollowing(user.uid);
+          posts = feed.posts;
+          followingCount = feed.followingCount;
+        }
+      } else {
+        posts = await _service.fetchRecommended(user?.uid);
+      }
+      if (!mounted) return;
+      setState(() {
+        _posts = posts;
+        _followingCount = followingCount;
+        _loading = false;
+        _error = null;
+      });
+    } catch (e) {
+      if (!mounted) return;
+      setState(() {
+        _loading = false;
+        if (_posts == null) _error = e;
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('藝術投稿平台'),
-        bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(104),
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
-                child: TextField(
-                  decoration: const InputDecoration(
-                    hintText: '搜尋標題、作者、#標籤',
-                    isDense: true,
-                  ),
-                  onChanged: (value) => setState(() => _searchQuery = value),
-                ),
-              ),
-              TabBar(
-                controller: _tabController,
-                tabs: const [
-                  Tab(text: '熱門'),
-                  Tab(text: '最新'),
-                  Tab(text: '追蹤中'),
-                ],
-              ),
-            ],
+        title: _buildSwitcher(),
+        actions: [
+          TextButton(
+            onPressed: () => showContentFilterSheet(context),
+            child: const Text('篩選'),
           ),
-        ),
-      ),
-      body: TabBarView(
-        controller: _tabController,
-        children: [
-          _buildPostStream(
-            appFirestore
-                .collection('posts')
-                .orderBy('likesCount', descending: true),
-          ),
-          _buildPostStream(
-            appFirestore
-                .collection('posts')
-                .orderBy('createdAt', descending: true),
-          ),
-          const Center(child: Text('追蹤功能尚未推出')),
         ],
       ),
+      body: _buildBody(),
     );
   }
 
-  Widget _buildPostStream(Query query) {
-    return StreamBuilder<QuerySnapshot>(
-      stream: query.snapshots(),
-      builder: (context, snapshot) {
-        if (snapshot.hasError) {
-          return Center(child: Text('讀取失敗：${snapshot.error}'));
-        }
-        if (!snapshot.hasData) {
-          return const Center(child: CircularProgressIndicator());
-        }
-        final posts = _filterPosts(
-          snapshot.data!.docs.map((doc) => Post.fromFirestore(doc)).toList(),
-        );
-        if (posts.isEmpty) {
-          return const Center(child: Text('目前還沒有作品'));
-        }
-        return MasonryGridView.count(
-          padding: const EdgeInsets.all(8),
-          crossAxisCount: 2,
-          mainAxisSpacing: 8,
-          crossAxisSpacing: 8,
-          itemCount: posts.length,
-          itemBuilder: (context, index) {
-            final post = posts[index];
-            return PostCard(
-              post: post,
-              onTap: () => Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => PostDetailScreen(post: post),
-                ),
+  Widget _buildSwitcher() {
+    final colorScheme = Theme.of(context).colorScheme;
+
+    Widget tab(String label, FeedMode mode) {
+      final selected = widget.mode == mode;
+      return GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: () => widget.onSwitchMode(mode),
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 6),
+          decoration: BoxDecoration(
+            border: Border(
+              bottom: BorderSide(
+                width: 2,
+                color: selected ? colorScheme.primary : Colors.transparent,
               ),
-            );
-          },
+            ),
+          ),
+          child: Text(
+            label,
+            style: TextStyle(
+              fontSize: 17,
+              fontWeight: selected ? FontWeight.bold : FontWeight.normal,
+              color: selected ? colorScheme.onSurface : Colors.grey.shade500,
+            ),
+          ),
+        ),
+      );
+    }
+
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        tab('追蹤中', FeedMode.following),
+        const SizedBox(width: 24),
+        tab('推薦', FeedMode.recommended),
+      ],
+    );
+  }
+
+  Widget _buildBody() {
+    if (_loading) return const Center(child: CircularProgressIndicator());
+    if (_error != null && _posts == null) {
+      return _MessageView(
+        text: '讀取失敗，請確認網路連線',
+        actionLabel: '重試',
+        onAction: refresh,
+      );
+    }
+
+    if (widget.mode == FeedMode.following) {
+      if (FirebaseAuth.instance.currentUser == null) {
+        return _MessageView(
+          text: '登入後就能看到你追蹤的創作者的最新作品',
+          actionLabel: '登入',
+          onAction: () => ensureSignedIn(context),
         );
-      },
+      }
+      if (_followingCount == 0) {
+        return _MessageView(
+          text: '還沒有追蹤任何創作者\n到「推薦」找找喜歡的作品吧',
+          actionLabel: '去看推薦',
+          onAction: () => widget.onSwitchMode(FeedMode.recommended),
+        );
+      }
+    }
+
+    return PostGrid(
+      posts: _posts ?? const [],
+      controller: _scrollController,
+      onRefresh: () => refresh(silent: true),
+      emptyText: widget.mode == FeedMode.following
+          ? '追蹤的創作者還沒有新作品'
+          : '目前還沒有作品',
+    );
+  }
+}
+
+class _MessageView extends StatelessWidget {
+  final String text;
+  final String actionLabel;
+  final VoidCallback onAction;
+
+  const _MessageView({
+    required this.text,
+    required this.actionLabel,
+    required this.onAction,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(32),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              text,
+              textAlign: TextAlign.center,
+              style: TextStyle(color: Colors.grey.shade700, height: 1.5),
+            ),
+            const SizedBox(height: 16),
+            ElevatedButton(onPressed: onAction, child: Text(actionLabel)),
+          ],
+        ),
+      ),
     );
   }
 }

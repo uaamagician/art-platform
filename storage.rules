@@ -1,12 +1,23 @@
 rules_version = '2';
 service firebase.storage {
   match /b/{bucket}/o {
-    match /posts/{userId}/{fileName} {
+    // Post images: posts/{uid}/{postId}/{n}.{ext}
+    match /posts/{userId}/{allPaths=**} {
       allow read: if true;
-      allow write: if request.auth != null
+      allow create, update: if request.auth != null
         && request.auth.uid == userId
-        && request.resource.size < 10 * 1024 * 1024
+        && request.resource.size < 20 * 1024 * 1024
         && request.resource.contentType.matches('image/.*');
+      allow delete: if request.auth != null && request.auth.uid == userId;
+    }
+
+    // Layer files / attachments (PSD, CLIP, KRA, Procreate...): attachments/{uid}/{postId}/{n}_{name}
+    match /attachments/{userId}/{allPaths=**} {
+      allow read: if true;
+      allow create, update: if request.auth != null
+        && request.auth.uid == userId
+        && request.resource.size < 100 * 1024 * 1024;
+      allow delete: if request.auth != null && request.auth.uid == userId;
     }
   }
 }

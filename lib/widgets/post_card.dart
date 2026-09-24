@@ -20,21 +20,27 @@ class PostCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CachedNetworkImage(
-              imageUrl: post.imageUrl,
-              fit: BoxFit.cover,
-              placeholder: (context, url) => Container(
-                color: Colors.grey.shade100,
-                height: 160,
-                alignment: Alignment.center,
-                child: const CircularProgressIndicator(strokeWidth: 2),
-              ),
-              errorWidget: (context, url, error) => Container(
-                color: Colors.grey.shade100,
-                height: 160,
-                alignment: Alignment.center,
-                child: const Text('圖片載入失敗', style: TextStyle(color: Colors.grey)),
-              ),
+            Stack(
+              children: [
+                _buildCover(),
+                Positioned(
+                  top: 8,
+                  left: 8,
+                  child: Row(
+                    children: [
+                      if (post.isNsfw) _badge('成人', Colors.red.shade400),
+                      if (post.isNsfw && post.isAiGenerated) const SizedBox(width: 4),
+                      if (post.isAiGenerated) _badge('AI', Colors.blueGrey),
+                    ],
+                  ),
+                ),
+                if (post.imageUrls.length > 1)
+                  Positioned(
+                    top: 8,
+                    right: 8,
+                    child: _badge('${post.imageUrls.length} 張', Colors.black54),
+                  ),
+              ],
             ),
             Padding(
               padding: const EdgeInsets.all(10),
@@ -59,7 +65,10 @@ class PostCard extends StatelessWidget {
                         child: post.userPhotoUrl.isEmpty
                             ? Text(
                                 post.userName.isNotEmpty ? post.userName[0] : '?',
-                                style: TextStyle(fontSize: 10, color: colorScheme.onPrimaryContainer),
+                                style: TextStyle(
+                                  fontSize: 10,
+                                  color: colorScheme.onPrimaryContainer,
+                                ),
                               )
                             : null,
                       ),
@@ -81,6 +90,7 @@ class PostCard extends StatelessWidget {
                         child: Chip(
                           label: Text(
                             post.category,
+                            overflow: TextOverflow.ellipsis,
                             style: const TextStyle(fontSize: 11),
                           ),
                           padding: EdgeInsets.zero,
@@ -88,9 +98,9 @@ class PostCard extends StatelessWidget {
                           materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                         ),
                       ),
-                      const Spacer(),
+                      const SizedBox(width: 6),
                       Text(
-                        '讚 ${post.likesCount}',
+                        '讚 ${post.likesCount}  留言 ${post.commentsCount}',
                         style: Theme.of(context).textTheme.bodySmall,
                       ),
                     ],
@@ -100,6 +110,43 @@ class PostCard extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildCover() {
+    final ratio = post.aspectRatio;
+    final image = CachedNetworkImage(
+      imageUrl: post.imageUrl,
+      fit: BoxFit.cover,
+      width: double.infinity,
+      placeholder: (context, url) => Container(
+        color: Colors.grey.shade100,
+        height: ratio == null ? 160 : null,
+        alignment: Alignment.center,
+        child: const CircularProgressIndicator(strokeWidth: 2),
+      ),
+      errorWidget: (context, url, error) => Container(
+        color: Colors.grey.shade100,
+        height: ratio == null ? 160 : null,
+        alignment: Alignment.center,
+        child: const Text('圖片載入失敗', style: TextStyle(color: Colors.grey)),
+      ),
+    );
+    if (ratio == null) return image;
+    return AspectRatio(aspectRatio: ratio.clamp(0.6, 1.6).toDouble(), child: image);
+  }
+
+  Widget _badge(String text, Color color) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+      decoration: BoxDecoration(
+        color: color,
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Text(
+        text,
+        style: const TextStyle(color: Colors.white, fontSize: 10),
       ),
     );
   }
