@@ -69,6 +69,23 @@ cd art-platform
 flutter pub get
 ```
 
+## 之後每次 pull 完要做的事
+
+每次 `git pull` 下來之後，**先跑一次 `flutter pub get`** 再 `flutter run`，不然可能會噴找不到套件的錯：
+
+```bash
+git pull
+flutter pub get
+```
+
+這次更新新增了三個套件（`file_picker`、`share_plus`、`url_launcher`），沒 `pub get` 一定會編譯失敗。
+新套件第一次 build 會比較久（要下載原生的東西，Android 大概要好幾分鐘，網路慢的話更久），不是當機，等它跑完就好。
+
+另外兩件事：
+
+- 現在**發文一定要帶 `isNsfw` 和 `isAiGenerated` 兩個欄位**（成人內容 / AI 生成標籤），沒帶的話 Firestore 會直接拒絕。如果你們有自己寫發文功能要記得加。
+- 我改過 Firestore / Storage 的安全規則（`firestore.rules`、`storage.rules`），已經部署上去了。如果你要新增自己的 collection（例如群組、委託），資料庫規則要跟我說一聲我幫你加，不然會 `permission-denied`。
+
 ## 資料庫（Firebase）
 
 這專案都用我 Firebase（Authentication、Firestore、Storage），設定檔在專案裡（`firebase_options.dart`、`google-services.json`、`GoogleService-Info.plist`），**不需要另外申請或設定資料庫**，`git clone` 下來就行。
