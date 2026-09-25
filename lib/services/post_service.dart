@@ -30,6 +30,15 @@ class PostService {
 
   DocumentReference<Map<String, dynamic>> newPostRef() => _posts.doc();
 
+  Future<String> fetchUserBio(String uid) async {
+    try {
+      final snap = await _user(uid).get();
+      return (snap.data()?['bio'] as String?) ?? '';
+    } catch (_) {
+      return '';
+    }
+  }
+
   Stream<DocumentSnapshot<Map<String, dynamic>>> postStream(String postId) =>
       _posts.doc(postId).snapshots();
 

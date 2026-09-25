@@ -27,6 +27,7 @@ class Post {
   final String userId;
   final String userName;
   final String userPhotoUrl;
+  final String userBio;
   final String title;
   final String description;
   final List<String> imageUrls;
@@ -45,6 +46,7 @@ class Post {
     required this.userId,
     required this.userName,
     required this.userPhotoUrl,
+    required this.userBio,
     required this.title,
     required this.description,
     required this.imageUrls,
@@ -74,6 +76,7 @@ class Post {
       userId: data['userId'] as String? ?? '',
       userName: data['userName'] as String? ?? '',
       userPhotoUrl: data['userPhotoUrl'] as String? ?? '',
+      userBio: data['userBio'] as String? ?? '',
       title: data['title'] as String? ?? '',
       description: data['description'] as String? ?? '',
       imageUrls: urls.isNotEmpty ? urls : (cover.isNotEmpty ? [cover] : const []),
@@ -94,6 +97,7 @@ class Post {
       'userId': userId,
       'userName': userName,
       'userPhotoUrl': userPhotoUrl,
+      'userBio': userBio,
       'title': title,
       'description': description,
       'imageUrl': imageUrl,

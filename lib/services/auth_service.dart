@@ -57,7 +57,7 @@ class AuthService {
         'followersCount': 0,
         'followingCount': 0,
         'showNsfw': false,
-        'showAi': true,
+        'showAi': false,
       });
     }
   }

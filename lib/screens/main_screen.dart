@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../theme/app_theme.dart';
 import '../widgets/auth_guard.dart';
 import 'explore_screen.dart';
 import 'group_screen.dart';
@@ -15,15 +16,17 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  // Pages in swipe order. Home is two adjacent pages (following / recommended)
+  // Pages in swipe order (same left-to-right order as the bottom nav, Publish is an action).
+  // Home sits in the middle as two adjacent pages (following / recommended)
   // so swiping left/right on the feed switches between them.
-  static const _followingPage = 0;
-  static const _recommendedPage = 1;
-  static const _explorePage = 2;
-  static const _groupPage = 3;
+  static const _explorePage = 0;
+  static const _groupPage = 1;
+  static const _followingPage = 2;
+  static const _recommendedPage = 3;
   static const _profilePage = 4;
 
-  static const _labels = ['主頁', '探索', '發布', '群組', '個人'];
+  static const _publishNavIndex = 3;
+  static const _labels = ['探索', '群組', '主頁', '發布', '個人'];
 
   final _pageController = PageController(initialPage: _recommendedPage);
   final _followingKey = GlobalKey<HomeFeedScreenState>();
@@ -33,6 +36,8 @@ class _MainScreenState extends State<MainScreen> {
   int _lastHomePage = _recommendedPage;
 
   late final List<Widget> _pages = [
+    const _KeepAlive(child: ExploreScreen()),
+    const _KeepAlive(child: GroupScreen()),
     _KeepAlive(
       child: HomeFeedScreen(
         key: _followingKey,
@@ -47,8 +52,6 @@ class _MainScreenState extends State<MainScreen> {
         onSwitchMode: _switchFeed,
       ),
     ),
-    const _KeepAlive(child: ExploreScreen()),
-    const _KeepAlive(child: GroupScreen()),
     const _KeepAlive(child: ProfileScreen()),
   ];
 
@@ -58,10 +61,12 @@ class _MainScreenState extends State<MainScreen> {
     super.dispose();
   }
 
+  bool get _onHome => _page == _followingPage || _page == _recommendedPage;
+
   int get _navIndex => switch (_page) {
-        _followingPage || _recommendedPage => 0,
-        _explorePage => 1,
-        _groupPage => 3,
+        _explorePage => 0,
+        _groupPage => 1,
+        _followingPage || _recommendedPage => 2,
         _ => 4,
       };
 
@@ -85,19 +90,19 @@ class _MainScreenState extends State<MainScreen> {
   void _onNavTap(int navIndex) {
     switch (navIndex) {
       case 0:
-        if (_page <= _recommendedPage) {
+        _goToPage(_explorePage);
+      case 1:
+        _goToPage(_groupPage);
+      case 2:
+        if (_onHome) {
           (_page == _followingPage ? _followingKey : _recommendedKey)
               .currentState
               ?.scrollToTop();
         } else {
           _goToPage(_lastHomePage);
         }
-      case 1:
-        _goToPage(_explorePage);
-      case 2:
+      case _publishNavIndex:
         _openPublish();
-      case 3:
-        _goToPage(_groupPage);
       case 4:
         _goToPage(_profilePage);
     }
@@ -122,23 +127,23 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
-
     return Scaffold(
       body: PageView(
         controller: _pageController,
         onPageChanged: (page) => setState(() {
           _page = page;
-          if (page <= _recommendedPage) _lastHomePage = page;
+          if (page == _followingPage || page == _recommendedPage) {
+            _lastHomePage = page;
+          }
         }),
         children: _pages,
       ),
       bottomNavigationBar: SafeArea(
         child: Container(
-          height: 60,
-          decoration: BoxDecoration(
-            color: Theme.of(context).scaffoldBackgroundColor,
-            border: Border(top: BorderSide(color: Colors.grey.shade200)),
+          height: 64,
+          decoration: const BoxDecoration(
+            color: Colors.white,
+            border: Border(top: BorderSide(color: AppColors.line)),
           ),
           child: Row(
             children: List.generate(_labels.length, (index) {
@@ -147,16 +152,9 @@ class _MainScreenState extends State<MainScreen> {
                 child: InkWell(
                   onTap: () => _onNavTap(index),
                   child: Center(
-                    child: Text(
-                      _labels[index],
-                      style: TextStyle(
-                        fontSize: index == 2 ? 16 : 13,
-                        fontWeight: (selected || index == 2) ? FontWeight.bold : FontWeight.normal,
-                        color: (selected || index == 2)
-                            ? colorScheme.primary
-                            : Colors.grey.shade600,
-                      ),
-                    ),
+                    child: index == _publishNavIndex
+                        ? _publishPill()
+                        : _navLabel(_labels[index], selected),
                   ),
                 ),
               );
@@ -164,6 +162,52 @@ class _MainScreenState extends State<MainScreen> {
           ),
         ),
       ),
+    );
+  }
+
+  Widget _publishPill() {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 10),
+      decoration: BoxDecoration(
+        color: AppColors.vermilion,
+        borderRadius: BorderRadius.circular(22),
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.vermilion.withValues(alpha: 0.35),
+            blurRadius: 12,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      child: const Text(
+        '發布',
+        style: TextStyle(color: Colors.white, fontSize: 15, fontWeight: FontWeight.w700),
+      ),
+    );
+  }
+
+  Widget _navLabel(String label, bool selected) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Text(
+          label,
+          style: TextStyle(
+            fontSize: 14,
+            fontWeight: selected ? FontWeight.w700 : FontWeight.w500,
+            color: selected ? AppColors.ink : AppColors.muted,
+          ),
+        ),
+        const SizedBox(height: 4),
+        Container(
+          width: 5,
+          height: 5,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: selected ? AppColors.vermilion : Colors.transparent,
+          ),
+        ),
+      ],
     );
   }
 }

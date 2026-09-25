@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '../services/auth_service.dart';
+import '../theme/app_theme.dart';
+import '../widgets/seal_logo.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -48,12 +50,23 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              const SealLogo(size: 84),
+              const SizedBox(height: 24),
               const Text(
                 '藝術投稿平台',
                 style: TextStyle(
                   fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                  letterSpacing: 1,
+                  fontWeight: FontWeight.w800,
+                  letterSpacing: 2,
+                ),
+              ),
+              const SizedBox(height: 6),
+              const Text(
+                'ART · PLATFORM',
+                style: TextStyle(
+                  fontSize: 12,
+                  letterSpacing: 5,
+                  color: AppColors.muted,
                 ),
               ),
               const SizedBox(height: 56),

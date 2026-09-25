@@ -386,6 +386,7 @@ class _UploadScreenState extends State<UploadScreen> {
         userId: user.uid,
         userName: user.displayName ?? '',
         userPhotoUrl: user.photoURL ?? '',
+        userBio: await postService.fetchUserBio(user.uid),
         title: title,
         description: _descriptionController.text.trim(),
         imageUrls: imageUrls,

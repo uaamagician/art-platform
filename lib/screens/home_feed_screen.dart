@@ -7,7 +7,9 @@ import '../models/post.dart';
 import '../services/post_service.dart';
 import '../widgets/auth_guard.dart';
 import '../widgets/content_filter_sheet.dart';
-import '../widgets/post_grid.dart';
+import '../theme/app_theme.dart';
+import '../widgets/post_feed_list.dart';
+import '../widgets/seal_logo.dart';
 
 enum FeedMode { following, recommended }
 
@@ -99,6 +101,11 @@ class HomeFeedScreenState extends State<HomeFeedScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leadingWidth: 56,
+        leading: const Padding(
+          padding: EdgeInsets.only(left: 16),
+          child: Center(child: SealLogo(size: 30)),
+        ),
         title: _buildSwitcher(),
         actions: [
           TextButton(
@@ -134,7 +141,7 @@ class HomeFeedScreenState extends State<HomeFeedScreen> {
             style: TextStyle(
               fontSize: 17,
               fontWeight: selected ? FontWeight.bold : FontWeight.normal,
-              color: selected ? colorScheme.onSurface : Colors.grey.shade500,
+              color: selected ? colorScheme.onSurface : AppColors.muted,
             ),
           ),
         ),
@@ -178,7 +185,7 @@ class HomeFeedScreenState extends State<HomeFeedScreen> {
       }
     }
 
-    return PostGrid(
+    return PostFeedList(
       posts: _posts ?? const [],
       controller: _scrollController,
       onRefresh: () => refresh(silent: true),

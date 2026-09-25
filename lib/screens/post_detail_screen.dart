@@ -11,10 +11,11 @@ import 'package:url_launcher/url_launcher.dart';
 import '../models/comment.dart';
 import '../models/post.dart';
 import '../services/auth_service.dart';
-import '../services/follow_service.dart';
 import '../services/post_service.dart';
 import '../utils/time_utils.dart';
+import '../theme/app_theme.dart';
 import '../widgets/auth_guard.dart';
+import '../widgets/author_header.dart';
 import 'category_posts_screen.dart';
 import 'image_viewer_screen.dart';
 import 'search_results_screen.dart';
@@ -30,7 +31,6 @@ class PostDetailScreen extends StatefulWidget {
 
 class _PostDetailScreenState extends State<PostDetailScreen> {
   final _postService = PostService();
-  final _followService = FollowService();
   final _commentController = TextEditingController();
   final _pageController = PageController();
 
@@ -136,7 +136,12 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
                     const SizedBox(height: 16),
                     Text(
                       post.title,
-                      style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      style: const TextStyle(fontSize: 21, fontWeight: FontWeight.w800, height: 1.3),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      timeAgo(post.createdAt),
+                      style: const TextStyle(fontSize: 12.5, color: AppColors.muted),
                     ),
                     if (post.description.isNotEmpty) ...[
                       const SizedBox(height: 8),
@@ -237,53 +242,7 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
     );
   }
 
-  Widget _buildAuthorRow(Post post) {
-    final colorScheme = Theme.of(context).colorScheme;
-    final isMine = AuthService().currentUser?.uid == post.userId;
-
-    return Row(
-      children: [
-        CircleAvatar(
-          radius: 20,
-          backgroundColor: colorScheme.primaryContainer,
-          backgroundImage: post.userPhotoUrl.isNotEmpty
-              ? CachedNetworkImageProvider(post.userPhotoUrl)
-              : null,
-          child: post.userPhotoUrl.isEmpty
-              ? Text(post.userName.isNotEmpty ? post.userName[0] : '?')
-              : null,
-        ),
-        const SizedBox(width: 10),
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                post.userName,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: const TextStyle(fontWeight: FontWeight.bold),
-              ),
-              Text(
-                timeAgo(post.createdAt),
-                style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
-              ),
-            ],
-          ),
-        ),
-        if (!isMine)
-          _ToggleActionButton(
-            compact: true,
-            stateStream: (uid) => _followService.isFollowingStream(uid, post.userId),
-            onToggle: (uid, active) async {
-              if (uid == post.userId) return;
-              await _followService.setFollowing(uid, post.userId, !active);
-            },
-            label: (active) => active ? '追蹤中' : '追蹤',
-          ),
-      ],
-    );
-  }
+  Widget _buildAuthorRow(Post post) => AuthorHeader(post: post);
 
   Widget _buildLabels(Post post) {
     Chip labelChip(String text, Color color) => Chip(
@@ -567,13 +526,11 @@ class _ToggleActionButton extends StatefulWidget {
   final Stream<bool> Function(String uid) stateStream;
   final Future<void> Function(String uid, bool active) onToggle;
   final String Function(bool active) label;
-  final bool compact;
 
   const _ToggleActionButton({
     required this.stateStream,
     required this.onToggle,
     required this.label,
-    this.compact = false,
   });
 
   @override
@@ -637,16 +594,10 @@ class _ToggleActionButtonState extends State<_ToggleActionButton> {
 
   @override
   Widget build(BuildContext context) {
-    final style = widget.compact
-        ? ButtonStyle(
-            minimumSize: const WidgetStatePropertyAll(Size(0, 34)),
-            padding: const WidgetStatePropertyAll(EdgeInsets.symmetric(horizontal: 14)),
-          )
-        : null;
     final child = Text(widget.label(_active));
 
     return _active
-        ? FilledButton.tonal(onPressed: _tap, style: style, child: child)
-        : OutlinedButton(onPressed: _tap, style: style, child: child);
+        ? FilledButton.tonal(onPressed: _tap, child: child)
+        : OutlinedButton(onPressed: _tap, child: child);
   }
 }

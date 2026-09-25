@@ -7,15 +7,15 @@ import 'package:flutter/foundation.dart';
 import '../models/post.dart';
 import 'firestore_service.dart';
 
-/// Global "show adult / AI content" preference.
-/// Stored on users/{uid}: showNsfw (default false), showAi (default true).
-/// Guests use in-memory defaults.
+/// Global "show adult / AI content" preference. Both are hidden by default.
+/// Stored on users/{uid}: showNsfw (default false), showAi (default false).
+/// Guests use in-memory defaults. Your own posts are always visible to you.
 class ContentFilterService extends ChangeNotifier {
   ContentFilterService._();
   static final ContentFilterService instance = ContentFilterService._();
 
   bool _showNsfw = false;
-  bool _showAi = true;
+  bool _showAi = false;
   StreamSubscription<User?>? _authSub;
   StreamSubscription<DocumentSnapshot<Map<String, dynamic>>>? _docSub;
 
@@ -27,13 +27,13 @@ class ContentFilterService extends ChangeNotifier {
       _docSub?.cancel();
       _docSub = null;
       if (user == null) {
-        _update(false, true);
+        _update(false, false);
         return;
       }
       _docSub = appFirestore.collection('users').doc(user.uid).snapshots().listen(
         (snap) {
           final data = snap.data();
-          _update(data?['showNsfw'] == true, data?['showAi'] != false);
+          _update(data?['showNsfw'] == true, data?['showAi'] == true);
         },
         onError: (_) {},
       );
@@ -51,6 +51,8 @@ class ContentFilterService extends ChangeNotifier {
   }
 
   bool allows(Post post) {
+    final me = FirebaseAuth.instance.currentUser?.uid;
+    if (me != null && post.userId == me) return true;
     if (post.isNsfw && !_showNsfw) return false;
     if (post.isAiGenerated && !_showAi) return false;
     return true;
