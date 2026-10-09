@@ -5,6 +5,7 @@ import '../models/post.dart';
 import '../theme/app_theme.dart';
 import '../utils/time_utils.dart';
 import 'author_header.dart';
+import 'feed_like_button.dart';
 
 /// Home feed card: author row on top, the artwork framed like a gallery print, then the details.
 class FeedPostCard extends StatelessWidget {
@@ -144,8 +145,8 @@ class FeedPostCard extends StatelessWidget {
         const SizedBox(height: 12),
         Row(
           children: [
-            Text('讚 ${post.likesCount}', style: _footerStyle),
-            const SizedBox(width: 14),
+            FeedLikeButton(post: post),
+            const SizedBox(width: 10),
             Text('留言 ${post.commentsCount}', style: _footerStyle),
             const Spacer(),
             Text(timeAgo(post.createdAt), style: _footerStyle),

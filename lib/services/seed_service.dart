@@ -1,5 +1,4 @@
 import 'firestore_service.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 /// 一次性寫入大分類與預設標籤，執行一次即可，不要重複執行。
 class SeedService {

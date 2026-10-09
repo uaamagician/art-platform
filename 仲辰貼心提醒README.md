@@ -126,3 +126,34 @@ Google 登入會檢查你電腦上簽章憑證的指紋（SHA-1），**每台電
 再說應該沒人有mac吧 如果要用iphone測試的可以用我電腦我可以帶過去
 
 ## 專案結構
+
+目前程式在 `lib/` 底下，大致這樣分（每個人的區塊可以直接在對應檔案上改）：
+
+| 區塊 | 負責 | 主要檔案 |
+| --- | --- | --- |
+| 主頁、發布、貼文互動 | 仲辰 | `screens/home_feed_screen.dart`、`upload_screen.dart`、`post_detail_screen.dart`、`services/post_service.dart` |
+| 群組（聊天室、共享白板） | 森堯 | `screens/group_screen.dart`、`group_room_screen.dart`、`widgets/group_chat_view.dart`、`whiteboard_view.dart`、`services/group_service.dart` |
+| 個人中心（粉絲、等級、成就、內容過濾） | 亮均 | `screens/profile_screen.dart`、`user_profile_screen.dart`、`settings_screen.dart`、`widgets/profile_body.dart`、`utils/level.dart`、`services/profile_service.dart` |
+| 探索、搜尋、委託、改圖諮詢 | 鈞棠 | `screens/explore_screen.dart`、`widgets/commission_list.dart`、`screens/commission_*_screen.dart`、`consult_*_screen.dart`、`services/commission_service.dart`、`consult_service.dart` |
+
+這些都是我先做好的雛形，已經能跑、資料庫規則也設好了，你們接手後直接往上改或重寫都可以。
+
+## 資料庫有哪些集合（collection）
+
+- `profiles/{uid}`：公開個人檔案（名稱、頭像、簡介、留言數、按讚數），**誰都能讀**。底下 `following`、`followers` 是追蹤與粉絲名單。
+- `users/{uid}`：私人帳號資料（email、成人／AI 內容顯示設定），**只有本人能讀寫**。底下 `liked`、`bookmarks` 是按讚與收藏。
+- `posts/{id}`：作品，底下 `likes`、`comments`。
+- `commissions/{id}`：委託。`reports/{id}`：檢舉紀錄（App 讀不到）。
+- `consults/{id}`：改圖諮詢，底下 `floors` 是蓋樓。
+- `groups/{id}`：群組，底下 `messages`（聊天）和 `strokes`（白板筆畫）。
+
+要看或改規則在專案根目錄的 `firestore.rules`、`storage.rules`，改完要部署才會生效：
+
+```bash
+firebase deploy --only firestore:rules,storage --project art-platform-a2f95
+```
+
+## 想在自己電腦上測試又不想弄髒共用資料庫
+
+專案有 `integration_test/app_flow_test.dart`，可以接本機的 Firebase 模擬器（Android 模擬器上跑）。需要先裝 Java 和 Firebase CLI，再啟動模擬器並塞測試資料。不會用也沒關係，直接用共用資料庫測試就行。
+

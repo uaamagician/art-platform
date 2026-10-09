@@ -1,0 +1,16 @@
+{
+  "name": "art-platform-emulator-tools",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "sync-rules": "cp ../../firestore.rules ../../storage.rules .",
+    "rules-test": "npm run sync-rules && firebase emulators:exec --config firebase.rules.json --only firestore,storage --project demo-art-platform \"node rules.test.mjs\"",
+    "start": "npm run sync-rules && firebase emulators:start --config firebase.app.json --only auth,firestore,storage --project art-platform-a2f95",
+    "seed": "./reset.sh"
+  },
+  "dependencies": {
+    "@firebase/rules-unit-testing": "^6.0.0",
+    "firebase": "^13.0.0",
+    "firebase-admin": "^14.5.0"
+  }
+}

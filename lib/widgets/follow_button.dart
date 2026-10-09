@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../services/auth_service.dart';
 import '../services/follow_service.dart';
-import '../services/following_store.dart';
+import '../services/id_set_store.dart';
 import '../theme/app_theme.dart';
 import 'auth_guard.dart';
 
@@ -45,12 +45,12 @@ class _FollowButtonState extends State<FollowButton> {
     if (widget.targetUid.isEmpty) return const SizedBox.shrink();
 
     return ListenableBuilder(
-      listenable: FollowingStore.instance,
+      listenable: UserStores.following,
       builder: (context, _) {
         if (AuthService().currentUser?.uid == widget.targetUid) {
           return const SizedBox.shrink();
         }
-        final following = FollowingStore.instance.isFollowing(widget.targetUid);
+        final following = UserStores.following.contains(widget.targetUid);
         const shape = StadiumBorder();
         const padding = EdgeInsets.symmetric(horizontal: 16);
         const size = Size(0, 34);

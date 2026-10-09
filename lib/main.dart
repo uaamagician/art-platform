@@ -3,7 +3,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'screens/main_screen.dart';
 import 'services/content_filter_service.dart';
-import 'services/following_store.dart';
+import 'services/id_set_store.dart';
+import 'services/session_service.dart';
 import 'theme/app_theme.dart';
 
 void main() async {
@@ -12,7 +13,8 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   ContentFilterService.instance.init();
-  FollowingStore.instance.init();
+  UserStores.init();
+  SessionService.init();
   runApp(const MyApp());
 }
 

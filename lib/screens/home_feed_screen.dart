@@ -4,9 +4,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../models/post.dart';
+import '../services/id_set_store.dart';
 import '../services/post_service.dart';
 import '../widgets/auth_guard.dart';
 import '../widgets/content_filter_sheet.dart';
+import '../widgets/feed_skeleton.dart';
 import '../theme/app_theme.dart';
 import '../widgets/post_feed_list.dart';
 import '../widgets/seal_logo.dart';
@@ -41,10 +43,17 @@ class HomeFeedScreenState extends State<HomeFeedScreen> {
   void initState() {
     super.initState();
     _authSub = FirebaseAuth.instance.authStateChanges().listen((_) => refresh());
+    UserStores.following.addListener(_onFollowingChanged);
+  }
+
+  /// Following someone (or unfollowing) should show up in the "追蹤中" feed right away.
+  void _onFollowingChanged() {
+    if (widget.mode == FeedMode.following && mounted) refresh(silent: true);
   }
 
   @override
   void dispose() {
+    UserStores.following.removeListener(_onFollowingChanged);
     _authSub?.cancel();
     _scrollController.dispose();
     super.dispose();
@@ -159,7 +168,7 @@ class HomeFeedScreenState extends State<HomeFeedScreen> {
   }
 
   Widget _buildBody() {
-    if (_loading) return const Center(child: CircularProgressIndicator());
+    if (_loading) return const FeedSkeleton();
     if (_error != null && _posts == null) {
       return _MessageView(
         text: '讀取失敗，請確認網路連線',

@@ -2,49 +2,84 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isUser(uid) {
+      return request.auth != null && request.auth.uid == uid;
+    }
+
+    function changedKeys() {
+      return request.resource.data.diff(resource.data).affectedKeys();
+    }
+
+    // ---- Accounts ---------------------------------------------------------
+    // users/{uid} is private account data (email, content filter settings, likes, bookmarks).
     match /users/{userId} {
-      allow read: if request.auth != null;
-      allow create, delete: if request.auth != null && request.auth.uid == userId;
-      // Owners can edit their profile; anyone signed in may only touch followersCount (follow / unfollow).
-      allow update: if request.auth != null && (
-        request.auth.uid == userId
-        || request.resource.data.diff(resource.data).affectedKeys().hasOnly(['followersCount'])
-      );
-
-      match /following/{targetId} {
-        allow read: if request.auth != null;
-        allow write: if request.auth != null && request.auth.uid == userId;
-      }
-
-      match /followers/{followerId} {
-        allow read: if request.auth != null;
-        allow write: if request.auth != null && request.auth.uid == followerId;
-      }
+      allow read: if isUser(userId);
+      allow create, update, delete: if isUser(userId);
 
       match /bookmarks/{postId} {
-        allow read, write: if request.auth != null && request.auth.uid == userId;
+        allow read, write: if isUser(userId);
       }
 
       match /liked/{postId} {
-        allow read, write: if request.auth != null && request.auth.uid == userId;
+        allow read, write: if isUser(userId);
       }
     }
 
+    // profiles/{uid} is the public face of a user: name, photo, bio and activity counters.
+    match /profiles/{uid} {
+      allow read: if true;
+      allow create, update: if isUser(uid)
+        && (!('bio' in request.resource.data)
+            || (request.resource.data.bio is string && request.resource.data.bio.size() <= 80));
+
+      match /following/{targetId} {
+        allow read: if true;
+        allow write: if isUser(uid);
+      }
+
+      match /followers/{followerId} {
+        allow read: if true;
+        allow write: if isUser(followerId);
+      }
+    }
+
+    // ---- Reference data ---------------------------------------------------
     match /categories/{categoryId} {
       allow read: if true;
-      allow write: if request.auth != null;
+      allow write: if signedIn();
     }
 
     match /tags/{tagId} {
       allow read: if true;
-      allow write: if request.auth != null;
+      allow write: if signedIn();
+    }
+
+    // ---- Posts ------------------------------------------------------------
+    function likeCountChange(postId) {
+      let likePath = /databases/$(database)/documents/posts/$(postId)/likes/$(request.auth.uid);
+      let oldCount = resource.data.get('likesCount', 0);
+      return changedKeys().hasOnly(['likesCount']) && (
+        (request.resource.data.likesCount == oldCount + 1
+          && !exists(likePath) && existsAfter(likePath))
+        || (request.resource.data.likesCount == oldCount - 1
+          && exists(likePath) && !existsAfter(likePath))
+      );
+    }
+
+    function commentCountChange() {
+      return changedKeys().hasOnly(['commentsCount'])
+        && (request.resource.data.commentsCount - resource.data.get('commentsCount', 0)) in [1, -1];
     }
 
     match /posts/{postId} {
       allow read: if true;
 
       // Adult (NSFW) and AI-generated labels are mandatory on every new post.
-      allow create: if request.auth != null
+      allow create: if signedIn()
         && request.resource.data.userId == request.auth.uid
         && request.resource.data.title is string
         && request.resource.data.title.size() > 0
@@ -54,31 +89,196 @@ service cloud.firestore {
         && request.resource.data.likesCount == 0
         && request.resource.data.commentsCount == 0;
 
-      // Owners can edit their post; anyone signed in may only change the like / comment counters.
-      allow update: if request.auth != null && (
+      // Owners edit their own post. Everyone else may only add or remove their own like (+-1 and a
+      // matching likes/{uid} document) or add or remove one comment (+-1).
+      allow update: if signedIn() && (
         resource.data.userId == request.auth.uid
-        || request.resource.data.diff(resource.data).affectedKeys().hasOnly(['likesCount', 'commentsCount'])
+        || likeCountChange(postId)
+        || commentCountChange()
       );
 
-      allow delete: if request.auth != null && resource.data.userId == request.auth.uid;
+      allow delete: if signedIn() && resource.data.userId == request.auth.uid;
 
       match /likes/{userId} {
-        allow read: if request.auth != null;
-        allow create, delete: if request.auth != null && request.auth.uid == userId;
+        allow read: if signedIn();
+        allow create, delete: if isUser(userId);
       }
 
       match /comments/{commentId} {
         allow read: if true;
-        allow create: if request.auth != null
+        allow create: if signedIn()
           && request.resource.data.userId == request.auth.uid
           && request.resource.data.text is string
           && request.resource.data.text.size() > 0
           && request.resource.data.text.size() <= 500;
         // The commenter or the post's author can delete a comment.
-        allow delete: if request.auth != null && (
+        allow delete: if signedIn() && (
           resource.data.userId == request.auth.uid
           || get(/databases/$(database)/documents/posts/$(postId)).data.userId == request.auth.uid
         );
+      }
+    }
+
+    // ---- Reports ----------------------------------------------------------
+    // One report per user per target (the document id enforces it). Nobody can read them from the app.
+    match /reports/{reportId} {
+      allow create: if signedIn()
+        && request.resource.data.reporterId == request.auth.uid
+        && request.resource.data.targetType in ['post', 'commission', 'consult']
+        && request.resource.data.reason is string
+        && request.resource.data.reason.size() <= 60
+        && reportId == request.resource.data.targetType + '_' + request.resource.data.targetId + '_' + request.auth.uid;
+    }
+
+    // ---- Commissions (委託) -------------------------------------------------
+    function commissionReportBump(cid) {
+      let reportPath = /databases/$(database)/documents/reports/$('commission_' + cid + '_' + request.auth.uid);
+      return changedKeys().hasOnly(['reportCount'])
+        && request.resource.data.reportCount == resource.data.get('reportCount', 0) + 1
+        && !exists(reportPath) && existsAfter(reportPath);
+    }
+
+    match /commissions/{cid} {
+      allow read: if true;
+
+      allow create: if signedIn()
+        && request.resource.data.userId == request.auth.uid
+        && request.resource.data.type in ['request', 'offer']
+        && request.resource.data.title is string
+        && request.resource.data.title.size() > 0
+        && request.resource.data.title.size() <= 50
+        && request.resource.data.description is string
+        && request.resource.data.description.size() <= 2000
+        && request.resource.data.contact is string
+        && request.resource.data.contact.size() > 0
+        && request.resource.data.contact.size() <= 100
+        && request.resource.data.isNsfw is bool
+        && request.resource.data.status == 'open'
+        && request.resource.data.reportCount == 0;
+
+      allow update: if signedIn() && (
+        (resource.data.userId == request.auth.uid
+          && request.resource.data.get('reportCount', 0) == resource.data.get('reportCount', 0))
+        || commissionReportBump(cid)
+      );
+
+      allow delete: if signedIn() && resource.data.userId == request.auth.uid;
+    }
+
+    // ---- Consults (改圖諮詢 / 蓋樓) -----------------------------------------
+    match /consults/{consultId} {
+      allow read: if true;
+
+      allow create: if signedIn()
+        && request.resource.data.userId == request.auth.uid
+        && request.resource.data.title is string
+        && request.resource.data.title.size() > 0
+        && request.resource.data.title.size() <= 50
+        && request.resource.data.imageUrl is string
+        && request.resource.data.imageUrl.size() > 0
+        && request.resource.data.floorsCount == 0;
+
+      // Anyone signed in may add the next floor; only the owner edits anything else.
+      allow update: if signedIn() && (
+        (resource.data.userId == request.auth.uid
+          && request.resource.data.floorsCount == resource.data.floorsCount)
+        || (changedKeys().hasOnly(['floorsCount'])
+          && request.resource.data.floorsCount == resource.data.floorsCount + 1)
+      );
+
+      allow delete: if signedIn() && resource.data.userId == request.auth.uid;
+
+      match /floors/{floorId} {
+        allow read: if true;
+        allow create: if signedIn()
+          && request.resource.data.userId == request.auth.uid
+          && request.resource.data.floor == getAfter(/databases/$(database)/documents/consults/$(consultId)).data.floorsCount
+          && request.resource.data.text is string
+          && request.resource.data.text.size() <= 500
+          && request.resource.data.imageUrl is string
+          && (request.resource.data.text.size() > 0 || request.resource.data.imageUrl.size() > 0);
+        // A floor is blanked, never removed, so floor numbers stay stable.
+        allow update: if signedIn()
+          && (resource.data.userId == request.auth.uid
+            || get(/databases/$(database)/documents/consults/$(consultId)).data.userId == request.auth.uid)
+          && changedKeys().hasOnly(['deleted', 'text', 'imageUrl']);
+      }
+    }
+
+    // ---- Groups (群組：聊天室與共享白板) -------------------------------------
+    function isMember(groupId) {
+      return signedIn()
+        && request.auth.uid in get(/databases/$(database)/documents/groups/$(groupId)).data.memberIds;
+    }
+
+    function isGroupOwner(groupId) {
+      return signedIn()
+        && get(/databases/$(database)/documents/groups/$(groupId)).data.ownerId == request.auth.uid;
+    }
+
+    function joiningSelf() {
+      return changedKeys().hasOnly(['memberIds'])
+        && !(request.auth.uid in resource.data.memberIds)
+        && request.resource.data.memberIds.hasAll(resource.data.memberIds)
+        && request.resource.data.memberIds.size() == resource.data.memberIds.size() + 1
+        && request.auth.uid in request.resource.data.memberIds;
+    }
+
+    function leavingSelf() {
+      return changedKeys().hasOnly(['memberIds'])
+        && request.auth.uid in resource.data.memberIds
+        && resource.data.memberIds.hasAll(request.resource.data.memberIds)
+        && request.resource.data.memberIds.size() == resource.data.memberIds.size() - 1
+        && !(request.auth.uid in request.resource.data.memberIds);
+    }
+
+    match /groups/{groupId} {
+      allow read: if signedIn();
+
+      allow create: if signedIn()
+        && request.resource.data.ownerId == request.auth.uid
+        && request.resource.data.memberIds == [request.auth.uid]
+        && request.resource.data.name is string
+        && request.resource.data.name.size() > 0
+        && request.resource.data.name.size() <= 30
+        && request.resource.data.description is string
+        && request.resource.data.description.size() <= 200;
+
+      // The owner can change anything (kick, lock the board); members can only join, leave
+      // or update the last-message preview.
+      allow update: if signedIn() && (
+        (resource.data.ownerId == request.auth.uid
+          && request.resource.data.ownerId == resource.data.ownerId)
+        || joiningSelf()
+        || leavingSelf()
+        || (request.auth.uid in resource.data.memberIds
+          && changedKeys().hasOnly(['lastMessage', 'lastMessageAt']))
+      );
+
+      allow delete: if signedIn() && resource.data.ownerId == request.auth.uid;
+
+      match /messages/{messageId} {
+        allow read: if isMember(groupId);
+        allow create: if isMember(groupId)
+          && request.resource.data.userId == request.auth.uid
+          && request.resource.data.text is string
+          && request.resource.data.text.size() > 0
+          && request.resource.data.text.size() <= 1000;
+        allow delete: if signedIn()
+          && (resource.data.userId == request.auth.uid || isGroupOwner(groupId));
+      }
+
+      match /strokes/{strokeId} {
+        allow read: if isMember(groupId);
+        allow create: if isMember(groupId)
+          && request.resource.data.userId == request.auth.uid
+          && request.resource.data.points is list
+          && request.resource.data.points.size() >= 2
+          && request.resource.data.points.size() <= 2000
+          && (isGroupOwner(groupId)
+            || get(/databases/$(database)/documents/groups/$(groupId)).data.get('locked', false) != true);
+        allow delete: if signedIn()
+          && (resource.data.userId == request.auth.uid || isGroupOwner(groupId));
       }
     }
   }

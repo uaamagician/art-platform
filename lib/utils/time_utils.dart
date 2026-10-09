@@ -16,3 +16,18 @@ String formatFileSize(int bytes) {
   if (bytes < 1024 * 1024) return '${(bytes / 1024).toStringAsFixed(1)} KB';
   return '${(bytes / (1024 * 1024)).toStringAsFixed(1)} MB';
 }
+
+String formatDate(Timestamp timestamp) {
+  final d = timestamp.toDate();
+  return '${d.year}/${d.month}/${d.day}';
+}
+
+/// "剩 5 天" / "今天截止" / "已過期" for a deadline.
+String deadlineLabel(Timestamp deadline) {
+  final days = DateTime(deadline.toDate().year, deadline.toDate().month, deadline.toDate().day)
+      .difference(DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day))
+      .inDays;
+  if (days < 0) return '已過期';
+  if (days == 0) return '今天截止';
+  return '剩 $days 天';
+}

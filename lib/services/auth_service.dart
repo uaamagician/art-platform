@@ -2,7 +2,7 @@ import 'firestore_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:flutter/foundation.dart' show debugPrint, kIsWeb;
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -38,7 +38,7 @@ class AuthService {
       }
       return user;
     } catch (e) {
-      print('登入失敗: $e');
+      debugPrint('登入失敗: $e');
       return null;
     }
   }
@@ -51,11 +51,7 @@ class AuthService {
         'displayName': user.displayName ?? '',
         'photoURL': user.photoURL ?? '',
         'email': user.email ?? '',
-        'bio': '',
         'createdAt': FieldValue.serverTimestamp(),
-        'postCount': 0,
-        'followersCount': 0,
-        'followingCount': 0,
         'showNsfw': false,
         'showAi': false,
       });

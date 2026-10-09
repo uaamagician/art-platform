@@ -32,9 +32,28 @@ class _PickedAttachment {
   const _PickedAttachment(this.file, this.size);
 }
 
+/// Pre-filled content for the publish screen (e.g. a finished group whiteboard).
+class UploadSeed {
+  final String imageName;
+  final Uint8List imageBytes;
+  final String title;
+  final String description;
+  final List<String> tags;
+
+  const UploadSeed({
+    required this.imageName,
+    required this.imageBytes,
+    this.title = '',
+    this.description = '',
+    this.tags = const [],
+  });
+}
+
 /// Pops with `true` when the post was published.
 class UploadScreen extends StatefulWidget {
-  const UploadScreen({super.key});
+  final UploadSeed? seed;
+
+  const UploadScreen({super.key, this.seed});
 
   @override
   State<UploadScreen> createState() => _UploadScreenState();
@@ -81,6 +100,16 @@ class _UploadScreenState extends State<UploadScreen> {
     super.initState();
     _categoriesFuture = _loadCategories();
     _presetTagsFuture = _loadPresetTags();
+    final seed = widget.seed;
+    if (seed != null) {
+      _images.add(_PickedImage(seed.imageName, seed.imageBytes));
+      _titleController.text = seed.title;
+      _descriptionController.text = seed.description;
+      for (final raw in seed.tags) {
+        final tag = normalizeTag(raw);
+        if (tag.isNotEmpty && !_customTags.contains(tag)) _customTags.add(tag);
+      }
+    }
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted && _images.isEmpty) _showImageSourceSheet();
     });

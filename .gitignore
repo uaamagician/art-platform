@@ -62,3 +62,9 @@ android/local.properties
 **/ios/Runner/GeneratedPluginRegistrant.*
 **/ios/DerivedData/
 **/ios/*.xcworkspace/xcuserdata/
+
+# Local emulator tooling
+tool/emulator/node_modules/
+tool/emulator/firestore.rules
+tool/emulator/storage.rules
+tool/emulator/*-debug.log

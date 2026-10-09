@@ -16,7 +16,9 @@ import '../utils/time_utils.dart';
 import '../theme/app_theme.dart';
 import '../widgets/auth_guard.dart';
 import '../widgets/author_header.dart';
+import '../widgets/report_sheet.dart';
 import 'category_posts_screen.dart';
+import 'edit_post_screen.dart';
 import 'image_viewer_screen.dart';
 import 'search_results_screen.dart';
 
@@ -36,6 +38,7 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
 
   int _imageIndex = 0;
   bool _sending = false;
+  late Post _latest = widget.post;
 
   @override
   void dispose() {
@@ -96,6 +99,71 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
     }
   }
 
+  Future<void> _showMenu() async {
+    final post = _latest;
+    final isOwner = AuthService().currentUser?.uid == post.userId;
+
+    final choice = await showModalBottomSheet<String>(
+      context: context,
+      showDragHandle: true,
+      builder: (context) => SafeArea(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            if (isOwner) ...[
+              ListTile(title: const Text('編輯作品'), onTap: () => Navigator.pop(context, 'edit')),
+              ListTile(
+                title: const Text('刪除作品', style: TextStyle(color: AppColors.vermilion)),
+                onTap: () => Navigator.pop(context, 'delete'),
+              ),
+            ] else
+              ListTile(title: const Text('檢舉作品'), onTap: () => Navigator.pop(context, 'report')),
+            const SizedBox(height: 8),
+          ],
+        ),
+      ),
+    );
+    if (choice == null || !mounted) return;
+
+    switch (choice) {
+      case 'edit':
+        final saved = await Navigator.of(context).push<bool>(
+          MaterialPageRoute(builder: (context) => EditPostScreen(post: post)),
+        );
+        if (saved == true && mounted) _showMessage('已更新作品');
+      case 'delete':
+        final confirmed = await showDialog<bool>(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: const Text('刪除這件作品？'),
+            content: const Text('作品、圖片與留言都會一併移除，無法復原。'),
+            actions: [
+              TextButton(onPressed: () => Navigator.pop(context, false), child: const Text('取消')),
+              TextButton(onPressed: () => Navigator.pop(context, true), child: const Text('刪除')),
+            ],
+          ),
+        );
+        if (confirmed != true || !mounted) return;
+        try {
+          await _postService.deletePost(post);
+          if (mounted) Navigator.of(context).pop(true);
+        } catch (_) {
+          if (mounted) _showMessage('刪除失敗，請稍後再試');
+        }
+      case 'report':
+        await reportWithFeedback(
+          context,
+          reasons: const ['成人內容未標示', 'AI 內容未標示', '侵權或抄襲', '垃圾訊息或廣告', '騷擾或不當內容', '其他'],
+          submit: (reason) => _postService.report(
+            'post',
+            post.id,
+            AuthService().currentUser!.uid,
+            reason,
+          ),
+        );
+    }
+  }
+
   Future<void> _share(Post post) async {
     await SharePlus.instance.share(
       ShareParams(
@@ -116,13 +184,17 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(widget.post.title)),
+      appBar: AppBar(
+        title: Text(widget.post.title),
+        actions: [TextButton(onPressed: _showMenu, child: const Text('更多'))],
+      ),
       body: StreamBuilder<DocumentSnapshot<Map<String, dynamic>>>(
         stream: _postService.postStream(widget.post.id),
         builder: (context, snapshot) {
           final post = (snapshot.hasData && snapshot.data!.exists)
               ? Post.fromFirestore(snapshot.data!)
               : widget.post;
+          _latest = post;
           return ListView(
             keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
             children: [

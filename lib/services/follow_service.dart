@@ -3,20 +3,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'firestore_service.dart';
 
 class FollowService {
-  DocumentReference<Map<String, dynamic>> _user(String uid) =>
-      appFirestore.collection('users').doc(uid);
-
-  Stream<bool> isFollowingStream(String me, String target) => _user(me)
-      .collection('following')
-      .doc(target)
-      .snapshots()
-      .map((s) => s.exists);
+  DocumentReference<Map<String, dynamic>> _profile(String uid) =>
+      appFirestore.collection('profiles').doc(uid);
 
   Future<void> setFollowing(String me, String target, bool follow) {
     final batch = appFirestore.batch();
-    final followingRef = _user(me).collection('following').doc(target);
-    final followerRef = _user(target).collection('followers').doc(me);
-    final delta = FieldValue.increment(follow ? 1 : -1);
+    final followingRef = _profile(me).collection('following').doc(target);
+    final followerRef = _profile(target).collection('followers').doc(me);
 
     if (follow) {
       batch.set(followingRef, {'createdAt': FieldValue.serverTimestamp()});
@@ -25,8 +18,24 @@ class FollowService {
       batch.delete(followingRef);
       batch.delete(followerRef);
     }
-    batch.set(_user(me), {'followingCount': delta}, SetOptions(merge: true));
-    batch.update(_user(target), {'followersCount': delta});
     return batch.commit();
+  }
+
+  Future<List<String>> followerIds(String uid) async {
+    final snap = await _profile(uid)
+        .collection('followers')
+        .orderBy('createdAt', descending: true)
+        .limit(200)
+        .get();
+    return snap.docs.map((d) => d.id).toList();
+  }
+
+  Future<List<String>> followingIds(String uid) async {
+    final snap = await _profile(uid)
+        .collection('following')
+        .orderBy('createdAt', descending: true)
+        .limit(200)
+        .get();
+    return snap.docs.map((d) => d.id).toList();
   }
 }

@@ -6,6 +6,39 @@ import '../screens/post_detail_screen.dart';
 import '../services/content_filter_service.dart';
 import 'post_card.dart';
 
+/// Two-column staggered grid that sizes itself to its content (for use inside another scroll view).
+class PostMasonry extends StatelessWidget {
+  final List<Post> posts;
+  final VoidCallback? onChanged;
+
+  const PostMasonry({super.key, required this.posts, this.onChanged});
+
+  @override
+  Widget build(BuildContext context) {
+    return MasonryGridView.count(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      padding: const EdgeInsets.all(8),
+      crossAxisCount: 2,
+      mainAxisSpacing: 8,
+      crossAxisSpacing: 8,
+      itemCount: posts.length,
+      itemBuilder: (context, index) {
+        final post = posts[index];
+        return PostCard(
+          post: post,
+          onTap: () async {
+            await Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) => PostDetailScreen(post: post)),
+            );
+            onChanged?.call();
+          },
+        );
+      },
+    );
+  }
+}
+
 /// Staggered grid of posts with pull-to-refresh and the global adult/AI content filter applied.
 class PostGrid extends StatelessWidget {
   final List<Post> posts;
