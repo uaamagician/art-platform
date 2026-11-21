@@ -366,14 +366,14 @@ def wrap(s, size, maxw):
     return rows
 
 
-def note_panel(c, x, title, owner, notes, status='待實現', y=60):
+def note_panel(c, x, title, owner, notes, status='草稿，僅供參考', y=60):
     """Right-hand spec panel for planned screens."""
     w = c.w - x - 20
     c.rect(x, y, w, c.h - y - 40, WHITE, rx=20, stroke=LINE)
     c.rect(x + 20, y + 22, tw(status, 13) + 22, 26, RED, rx=13)
     c.text(x + 31, y + 40, status, 13, 700, WHITE)
     c.text(x + 20, y + 80, title, 20, 800, INK)
-    c.text(x + 20, y + 104, '負責：' + owner, 13, 500, MUTED)
+    c.text(x + 20, y + 104, '可能的負責人：' + owner, 13, 500, MUTED)
     c.line(x + 20, y + 120, x + w - 20, y + 120, LINE)
     cy = y + 148
     maxw = w - 72
@@ -394,3 +394,45 @@ def callout(c, n, x, y):
     """Numbered marker placed on the phone to match the notes panel."""
     c.circle(x, y, 11, RED)
     c.text(x, y + 4.5, str(n), 12, 700, WHITE, 'middle')
+
+
+# ---- name the layers ---------------------------------------------------------
+# Every UI piece is wrapped in a named <g>, so Figma shows "按鈕 登入", "卡片", "底部導覽列"
+# instead of hundreds of loose rectangles and texts.
+
+def named(label):
+    def deco(fn):
+        def wrapper(c, *args, **kw):
+            c.group(label(args, kw) if callable(label) else label)
+            try:
+                return fn(c, *args, **kw)
+            finally:
+                c.end()
+        wrapper.__name__ = fn.__name__
+        wrapper.__doc__ = fn.__doc__
+        return wrapper
+    return deco
+
+
+def _arg(args, i, default=''):
+    return str(args[i]) if len(args) > i else default
+
+
+for _n, _label in {
+    'status_bar': '狀態列',
+    'seal': 'Logo 印章',
+    'appbar': lambda a, k: '頂部標題列 ' + _arg(a, 0),
+    'bottom_nav': '底部導覽列',
+    'chip': lambda a, k: '標籤 ' + _arg(a, 2),
+    'pill': lambda a, k: '膠囊按鈕 ' + _arg(a, 4),
+    'button': lambda a, k: '按鈕 ' + _arg(a, 4),
+    'field': lambda a, k: '輸入框 ' + str(k.get('label') or k.get('placeholder') or k.get('value') or ''),
+    'segment': '分段切換',
+    'card': '卡片底',
+    'switch': '開關',
+    'badge': lambda a, k: '徽章 ' + _arg(a, 2),
+    'avatar': lambda a, k: '頭像 ' + _arg(a, 3),
+    'art': '作品圖（佔位）',
+    'mascot': '看板娘',
+}.items():
+    globals()[_n] = named(_label)(globals()[_n])

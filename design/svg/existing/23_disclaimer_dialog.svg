@@ -4,6 +4,7 @@
 <linearGradient id="disclaimer_dialog-g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3C1C6"/><stop offset="1" stop-color="#C9677A"/></linearGradient>
 <clipPath id="disclaimer_dialog-c2"><rect x="290" y="656" width="72" height="72" rx="12"/></clipPath></defs>
 <rect x="0" y="0" width="390" height="844" rx="0" fill="#F8F4EE" id="background"/>
+<g id="狀態列">
 <text x="24" y="28" font-size="15" font-weight="600" fill="#221E1B" text-anchor="start">9:41</text>
 <rect x="284" y="20" width="3" height="6" rx="1" fill="#221E1B"/>
 <rect x="289" y="17" width="3" height="9" rx="1" fill="#221E1B"/>
@@ -14,18 +15,33 @@
 <rect x="332" y="14" width="24" height="12" rx="3.5" fill="none" stroke="#221E1B" stroke-width="1.2" opacity="0.9"/>
 <rect x="334" y="16" width="17" height="8" rx="2" fill="#221E1B"/>
 <rect x="357" y="18" width="2" height="4" rx="1" fill="#221E1B"/>
+</g>
+<g id="探索上方（搜尋＋分頁）">
+<g id="頂部標題列 探索">
 <text x="195" y="72" font-size="20" font-weight="700" fill="#221E1B" text-anchor="middle">探索</text>
+</g>
+<g id="搜尋列">
 <rect x="16.5" y="100.5" width="357" height="47" rx="24" fill="#FFFFFF" stroke="#E9E1D6" stroke-width="1"/>
 <text x="34" y="130" font-size="15" font-weight="400" fill="#8A8178" text-anchor="start">搜尋標題、創作者、#標籤</text>
+</g>
 <text x="16" y="184" font-size="13" font-weight="800" fill="#221E1B" text-anchor="start">熱門</text>
+<g id="標籤 #鉛筆素描">
 <rect x="56" y="168" width="85.15" height="34" rx="17.0" fill="#F3E9DD"/>
 <text x="98.575" y="189.68" font-size="13" font-weight="400" fill="#221E1B" text-anchor="middle">#鉛筆素描</text>
+</g>
+<g id="標籤 #靜物">
 <rect x="149.15" y="168" width="59.15" height="34" rx="17.0" fill="#F3E9DD"/>
 <text x="178.725" y="189.68" font-size="13" font-weight="400" fill="#221E1B" text-anchor="middle">#靜物</text>
+</g>
+<g id="標籤 #電繪">
 <rect x="216.3" y="168" width="59.15" height="34" rx="17.0" fill="#F3E9DD"/>
 <text x="245.875" y="189.68" font-size="13" font-weight="400" fill="#221E1B" text-anchor="middle">#電繪</text>
+</g>
+<g id="標籤 #角色設計">
 <rect x="283.45000000000005" y="168" width="85.15" height="34" rx="17.0" fill="#F3E9DD"/>
 <text x="326.02500000000003" y="189.68" font-size="13" font-weight="400" fill="#221E1B" text-anchor="middle">#角色設計</text>
+</g>
+<g id="分段切換">
 <rect x="16" y="214" width="358" height="38" rx="19.0" fill="#F3E9DD"/>
 <text x="63.75" y="238.0" font-size="14" font-weight="500" fill="#8A8178" text-anchor="middle">分類</text>
 <text x="151.25" y="238.0" font-size="14" font-weight="500" fill="#8A8178" text-anchor="middle">創作者</text>
@@ -33,19 +49,28 @@
 <rect x="195.0" y="218" width="87.5" height="30" rx="15.0" fill="none"/>
 <text x="238.75" y="238.0" font-size="14" font-weight="700" fill="#221E1B" text-anchor="middle">委託</text>
 <text x="326.25" y="238.0" font-size="14" font-weight="500" fill="#8A8178" text-anchor="middle">改圖</text>
+</g>
+</g>
+<g id="分段切換">
 <rect x="16" y="262" width="358" height="38" rx="19.0" fill="#F3E9DD"/>
 <rect x="20.0" y="266" width="116.66666666666667" height="30" rx="15.0" fill="#FFFFFF"/>
 <rect x="20.0" y="266" width="116.66666666666667" height="30" rx="15.0" fill="none"/>
 <text x="78.33333333333334" y="286.0" font-size="14" font-weight="700" fill="#221E1B" text-anchor="middle">全部</text>
 <text x="195.00000000000003" y="286.0" font-size="14" font-weight="500" fill="#8A8178" text-anchor="middle">委託需求</text>
 <text x="311.6666666666667" y="286.0" font-size="14" font-weight="500" fill="#8A8178" text-anchor="middle">接單展示</text>
+</g>
 <rect x="14" y="314" width="362" height="52" rx="16" fill="#F3E9DD"/>
 <text x="30" y="337" font-size="12.5" font-weight="400" fill="#5C544C" text-anchor="start">平台只刊登委託資訊，交易與付款請在站外</text>
 <text x="30" y="355" font-size="12.5" font-weight="400" fill="#5C544C" text-anchor="start">自行確認。</text>
 <text x="360" y="346" font-size="14" font-weight="700" fill="#C9402F" text-anchor="end">免責聲明</text>
+<g id="委託卡片 徵 VTuber 立繪">
+<g id="卡片底">
 <rect x="14.5" y="378.5" width="361" height="213" rx="20" fill="#FFFFFF" stroke="#E9E1D6" stroke-width="1"/>
+</g>
+<g id="徽章 委託需求">
 <rect x="30" y="394" width="68.0" height="22" rx="11" fill="#C9402F" opacity="0.12"/>
 <text x="64.0" y="410" font-size="12" font-weight="700" fill="#C9402F" text-anchor="middle">委託需求</text>
+</g>
 <text x="362" y="410" font-size="12" font-weight="400" fill="#8A8178" text-anchor="end">11 分鐘前</text>
 <text x="30" y="444" font-size="17" font-weight="700" fill="#221E1B" text-anchor="start">徵 VTuber 立繪</text>
 <text x="30" y="470" font-size="14" font-weight="400" fill="#5C544C" text-anchor="start">需要全身立繪與表情差分</text>
@@ -54,28 +79,44 @@
 <text x="160.41000000000003" y="502" font-size="13" font-weight="400" fill="#8A8178" text-anchor="start">期限</text>
 <text x="200.41000000000003" y="502" font-size="13" font-weight="700" fill="#221E1B" text-anchor="start">2026/10/29</text>
 <text x="30" y="528" font-size="13" font-weight="600" fill="#C9402F" text-anchor="start">#立繪</text>
+<g id="頭像 C">
 <circle cx="41" cy="554" r="11" fill="#F8DDD6"/>
 <text x="41" y="557.74" font-size="9" font-weight="700" fill="#6B1E14" text-anchor="middle">C</text>
+</g>
 <text x="60" y="559" font-size="13" font-weight="400" fill="#8A8178" text-anchor="start">Carol 王</text>
+</g>
+<g id="委託卡片 頭像接單中">
+<g id="卡片底">
 <rect x="14.5" y="606.5" width="361" height="177" rx="20" fill="#FFFFFF" stroke="#E9E1D6" stroke-width="1"/>
+</g>
+<g id="徽章 接單展示">
 <rect x="30" y="622" width="68.0" height="22" rx="11" fill="#3F7D5B" opacity="0.12"/>
 <text x="64.0" y="638" font-size="12" font-weight="700" fill="#3F7D5B" text-anchor="middle">接單展示</text>
+</g>
 <text x="362" y="638" font-size="12" font-weight="400" fill="#8A8178" text-anchor="end">41 分鐘前</text>
 <text x="30" y="672" font-size="17" font-weight="700" fill="#221E1B" text-anchor="start">頭像接單中</text>
+<g id="作品圖（佔位）">
 <g clip-path="url(#disclaimer_dialog-c2)">
 <rect x="290" y="656" width="72" height="72" rx="0" fill="url(#disclaimer_dialog-g1)"/>
 <circle cx="341.84" cy="676.16" r="9.36" fill="#FFFFFF" opacity="0.55"/>
 <path d="M290 707.84 Q311.6 692.0 329.6 704.96 T362 699.2 V728 H290 Z" fill="#FFFFFF" opacity="0.28"/>
 <path d="M290 717.92 Q315.2 706.4 340.4 716.48 T362 712.16 V728 H290 Z" fill="#221E1B" opacity="0.18"/>
 </g>
+</g>
 <text x="30" y="704" font-size="13" font-weight="400" fill="#8A8178" text-anchor="start">預算</text>
 <text x="70" y="704" font-size="13" font-weight="700" fill="#221E1B" text-anchor="start">NT$800</text>
 <text x="30" y="730" font-size="13" font-weight="600" fill="#C9402F" text-anchor="start">#頭像</text>
+<g id="頭像 B">
 <circle cx="41" cy="756" r="11" fill="#F8DDD6"/>
 <text x="41" y="759.74" font-size="9" font-weight="700" fill="#6B1E14" text-anchor="middle">B</text>
+</g>
 <text x="60" y="761" font-size="13" font-weight="400" fill="#8A8178" text-anchor="start">Bob 陳</text>
+</g>
+<g id="黑色浮動按鈕">
 <rect x="262" y="708" width="112" height="46" rx="23" fill="#221E1B"/>
 <text x="318.0" y="737" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">發布委託</text>
+</g>
+<g id="底部導覽列">
 <rect x="0" y="780" width="390" height="64" rx="0" fill="#FFFFFF" id="bottom-nav"/>
 <line x1="0" y1="780.5" x2="390" y2="780.5" stroke="#E9E1D6" stroke-width="1" stroke-linecap="round"/>
 <text x="39" y="812" font-size="14" font-weight="700" fill="#221E1B" text-anchor="middle">探索</text>
@@ -87,8 +128,9 @@
 <text x="273" y="819" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">發布</text>
 <text x="351" y="812" font-size="14" font-weight="500" fill="#8A8178" text-anchor="middle">個人</text>
 <rect x="135" y="834" width="120" height="4" rx="2" fill="#221E1B" opacity="0.85"/>
-<rect x="0" y="0" width="390" height="844" rx="0" fill="#221E1B" opacity="0.42"/>
-<rect x="36" y="279.5" width="318" height="237" rx="28" fill="#FFFFFF" id="dialog"/>
+</g>
+<rect x="0" y="0" width="390" height="844" rx="0" fill="#221E1B" opacity="0.42" id="遮罩"/>
+<rect x="36" y="279.5" width="318" height="237" rx="28" fill="#FFFFFF" id="彈窗底"/>
 <text x="60" y="327.5" font-size="20" font-weight="700" fill="#221E1B" text-anchor="start">免責聲明</text>
 <text x="60" y="357.5" font-size="14" font-weight="400" fill="#5C544C" text-anchor="start">本平台僅提供委託資訊的刊登與展示，不介入</text>
 <text x="60" y="378.5" font-size="14" font-weight="400" fill="#5C544C" text-anchor="start">雙方的溝通、報價、付款與交付，也不經手任</text>

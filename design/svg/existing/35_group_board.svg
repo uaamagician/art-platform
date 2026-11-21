@@ -2,6 +2,7 @@
 <defs><filter id="group_board-sh" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#221E1B" flood-opacity="0.07"/></filter>
 <filter id="group_board-sh2" x="-30%" y="-30%" width="160%" height="180%"><feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#C9402F" flood-opacity="0.35"/></filter></defs>
 <rect x="0" y="0" width="390" height="844" rx="0" fill="#F8F4EE" id="background"/>
+<g id="狀態列">
 <text x="24" y="28" font-size="15" font-weight="600" fill="#221E1B" text-anchor="start">9:41</text>
 <rect x="284" y="20" width="3" height="6" rx="1" fill="#221E1B"/>
 <rect x="289" y="17" width="3" height="9" rx="1" fill="#221E1B"/>
@@ -12,15 +13,20 @@
 <rect x="332" y="14" width="24" height="12" rx="3.5" fill="none" stroke="#221E1B" stroke-width="1.2" opacity="0.9"/>
 <rect x="334" y="16" width="17" height="8" rx="2" fill="#221E1B"/>
 <rect x="357" y="18" width="2" height="4" rx="1" fill="#221E1B"/>
+</g>
+<g id="頂部標題列 速寫小聚">
 <path d="M30 74 L21 65 L30 56" fill="none" stroke="#221E1B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
 <text x="195" y="68" font-size="20" font-weight="700" fill="#221E1B" text-anchor="middle">速寫小聚</text>
 <text x="195" y="86" font-size="12" font-weight="400" fill="#8A8178" text-anchor="middle">3 位成員</text>
+</g>
+<g id="分段切換">
 <rect x="16" y="108" width="358" height="38" rx="19.0" fill="#F3E9DD"/>
 <text x="78.33333333333334" y="132.0" font-size="14" font-weight="500" fill="#8A8178" text-anchor="middle">聊天</text>
 <rect x="136.66666666666669" y="112" width="116.66666666666667" height="30" rx="15.0" fill="#FFFFFF"/>
 <rect x="136.66666666666669" y="112" width="116.66666666666667" height="30" rx="15.0" fill="none"/>
 <text x="195.00000000000003" y="132.0" font-size="14" font-weight="700" fill="#221E1B" text-anchor="middle">白板</text>
 <text x="311.6666666666667" y="132.0" font-size="14" font-weight="500" fill="#8A8178" text-anchor="middle">成員</text>
+</g>
 <rect x="16" y="160" width="358" height="440" rx="14" fill="#FFFFFF" stroke="#E9E1D6" stroke-width="1" filter="url(#group_board-sh)"/>
 <path d="M70 250 Q140 360 210 330 T330 270" fill="none" stroke="#C9402F" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M90 420 Q150 380 220 440 T320 400" fill="none" stroke="#2F5D9E" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>

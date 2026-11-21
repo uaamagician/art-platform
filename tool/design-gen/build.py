@@ -1,6 +1,6 @@
 """Generates design/svg/*.svg (import into Figma) and design/gallery.html (share with the team).
 
-Run:  python3 design/build/build.py
+Run:  python3 tool/design-gen/build.py
 """
 import html
 import os
@@ -13,7 +13,7 @@ sys.path.insert(0, HERE)
 from catalog import SECTIONS  # noqa: E402
 from screens_planned import PLANNED  # noqa: E402
 
-OUT = os.path.abspath(os.path.join(HERE, '..'))
+OUT = os.path.abspath(os.path.join(HERE, '..', '..', 'design'))
 
 OWNERS = {
     '主頁': ('主頁與發布', '林仲辰'),
@@ -153,22 +153,22 @@ footer {{ margin-top: 60px; color: var(--muted); font-size: 13px; }}
 <header>
   <div class="seal">藝</div>
   <h1>Art-Platform 設計稿</h1>
-  <p>繪圖創作者社群 App。上半是還沒實現、要交給組員做的功能示意（右側有規格與負責人），下半是目前 App 已經做出來的所有畫面。點圖可放大。</p>
+  <p>繪圖創作者社群 App。這是給大家看大概長怎樣的草稿，不是定案，美術、介面可以整個重做。上半是還沒做的功能的想法（右邊有說明），下半是目前 App 的畫面。點圖可放大。</p>
   <div class="tokens">{swatches}</div>
 </header>
 
-<h2>待實現的功能（{len(todo)}）</h2>
-<p>每張圖的右邊是規格，圖上的紅色數字對應規格的編號。</p>
+<h2>還沒做的功能（草稿 {len(todo)} 張）</h2>
+<p>右邊是我們目前的想法，紅色數字對應說明的編號。都可以改。</p>
 <div class="bar" id="owners"><button class="chip" data-f="" aria-pressed="true">全部</button>{chips}</div>
 <div class="grid planned" id="planned">
 {''.join(todo)}
 </div>
 
-<h2>已完成的畫面（{len(done)}）</h2>
-<p>這些都已經能在 App 裡操作，含所有頁面、彈窗、選單與空狀態，依功能分組；畫面由程式碼的主題設定一比一畫出。</p>
+<h2>目前 App 的畫面（{len(done)} 張，參考用）</h2>
+<p>App 現在大概長這樣，含各頁面、彈窗、選單與空狀態，依功能分組。顏色與版面只是目前的暫時版本。</p>
 {done_html}
 
-<footer>色票、圓角、字級來自 lib/theme/app_theme.dart。圖檔在 design/svg/，可直接拖進 Figma。</footer>
+<footer>色票、圓角、字級來自 lib/theme/app_theme.dart。圖檔在 design/png 和 design/svg，可以拖進 Figma 參考。</footer>
 </main>
 <dialog id="dlg"><div class="box" id="box"></div></dialog>
 <script>

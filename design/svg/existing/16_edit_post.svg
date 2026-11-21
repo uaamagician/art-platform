@@ -2,6 +2,7 @@
 <defs><filter id="edit_post-sh" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#221E1B" flood-opacity="0.07"/></filter>
 <filter id="edit_post-sh2" x="-30%" y="-30%" width="160%" height="180%"><feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#C9402F" flood-opacity="0.35"/></filter></defs>
 <rect x="0" y="0" width="390" height="844" rx="0" fill="#F8F4EE" id="background"/>
+<g id="狀態列">
 <text x="24" y="28" font-size="15" font-weight="600" fill="#221E1B" text-anchor="start">9:41</text>
 <rect x="284" y="20" width="3" height="6" rx="1" fill="#221E1B"/>
 <rect x="289" y="17" width="3" height="9" rx="1" fill="#221E1B"/>
@@ -12,30 +13,49 @@
 <rect x="332" y="14" width="24" height="12" rx="3.5" fill="none" stroke="#221E1B" stroke-width="1.2" opacity="0.9"/>
 <rect x="334" y="16" width="17" height="8" rx="2" fill="#221E1B"/>
 <rect x="357" y="18" width="2" height="4" rx="1" fill="#221E1B"/>
+</g>
+<g id="頂部標題列 編輯作品">
 <path d="M30 74 L21 65 L30 56" fill="none" stroke="#221E1B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
 <text x="195" y="72" font-size="20" font-weight="700" fill="#221E1B" text-anchor="middle">編輯作品</text>
 <text x="374" y="72" font-size="15" font-weight="500" fill="#C9402F" text-anchor="end">儲存</text>
+</g>
+<g id="輸入框 標題">
 <rect x="16.5" y="112.5" width="357" height="55" rx="14" fill="#FFFFFF" stroke="#E9E1D6" stroke-width="1"/>
 <text x="32" y="132" font-size="12" font-weight="400" fill="#8A8178" text-anchor="start">標題</text>
 <text x="32" y="154" font-size="15" font-weight="400" fill="#221E1B" text-anchor="start">窗邊的靜物</text>
+</g>
 <rect x="16.5" y="192.5" width="357" height="111" rx="14" fill="#FFFFFF" stroke="#E9E1D6" stroke-width="1"/>
 <text x="32" y="214" font-size="12" font-weight="400" fill="#8A8178" text-anchor="start">作品描述</text>
 <text x="32" y="242" font-size="15" font-weight="400" fill="#221E1B" text-anchor="start">用 2B 鉛筆畫了一個下午</text>
 <text x="16" y="342" font-size="15" font-weight="800" fill="#221E1B" text-anchor="start">分類</text>
+<g id="標籤 傳統手繪">
 <rect x="16" y="356" width="78.0" height="32" rx="16.0" fill="#F8DDD6"/>
 <text x="55.0" y="376.68" font-size="13" font-weight="600" fill="#221E1B" text-anchor="middle">傳統手繪</text>
+</g>
+<g id="標籤 顏料繪畫">
 <rect x="102.0" y="356" width="78.0" height="32" rx="16.0" fill="#FFFFFF"/>
 <text x="141.0" y="376.68" font-size="13" font-weight="400" fill="#221E1B" text-anchor="middle">顏料繪畫</text>
+</g>
+<g id="標籤 數位繪圖">
 <rect x="188.0" y="356" width="78.0" height="32" rx="16.0" fill="#FFFFFF"/>
 <text x="227.0" y="376.68" font-size="13" font-weight="400" fill="#221E1B" text-anchor="middle">數位繪圖</text>
+</g>
 <text x="16" y="424" font-size="15" font-weight="800" fill="#221E1B" text-anchor="start">標籤</text>
+<g id="標籤 #鉛筆素描  ✕">
 <rect x="16" y="438" width="100.10000000000001" height="32" rx="16.0" fill="#F3E9DD"/>
 <text x="66.05000000000001" y="458.68" font-size="13" font-weight="400" fill="#221E1B" text-anchor="middle">#鉛筆素描  ✕</text>
+</g>
+<g id="標籤 #靜物  ✕">
 <rect x="124.10000000000001" y="438" width="74.1" height="32" rx="16.0" fill="#F3E9DD"/>
 <text x="161.15" y="458.68" font-size="13" font-weight="400" fill="#221E1B" text-anchor="middle">#靜物  ✕</text>
+</g>
+<g id="輸入框 自訂標籤，例如：光影練習">
 <rect x="16.5" y="488.5" width="289" height="43" rx="14" fill="#FFFFFF" stroke="#E9E1D6" stroke-width="1"/>
 <text x="32" y="515.0" font-size="15" font-weight="400" fill="#8A8178" text-anchor="start">自訂標籤，例如：光影練習</text>
+</g>
+<g id="膠囊按鈕 新增">
 <rect x="314.5" y="493.5" width="59" height="33" rx="17.0" fill="#FFFFFF" stroke="#E9E1D6" stroke-width="1"/>
 <text x="344.0" y="514.68" font-size="13" font-weight="500" fill="#8A8178" text-anchor="middle">新增</text>
+</g>
 <text x="16" y="580" font-size="12" font-weight="400" fill="#8A8178" text-anchor="start">圖片、成人內容與 AI 生成標籤在發布後無法修改。</text>
 </svg>

@@ -10,6 +10,7 @@
 <linearGradient id="profile_collections-g7" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3C1C6"/><stop offset="1" stop-color="#C9677A"/></linearGradient>
 <clipPath id="profile_collections-c8"><rect x="8" y="990" width="183" height="176" rx="16"/></clipPath></defs>
 <rect x="0" y="0" width="390" height="1250" rx="0" fill="#F8F4EE" id="background"/>
+<g id="狀態列">
 <text x="24" y="28" font-size="15" font-weight="600" fill="#221E1B" text-anchor="start">9:41</text>
 <rect x="284" y="20" width="3" height="6" rx="1" fill="#221E1B"/>
 <rect x="289" y="17" width="3" height="9" rx="1" fill="#221E1B"/>
@@ -20,11 +21,17 @@
 <rect x="332" y="14" width="24" height="12" rx="3.5" fill="none" stroke="#221E1B" stroke-width="1.2" opacity="0.9"/>
 <rect x="334" y="16" width="17" height="8" rx="2" fill="#221E1B"/>
 <rect x="357" y="18" width="2" height="4" rx="1" fill="#221E1B"/>
+</g>
+<g id="頂部標題列 個人檔案">
 <text x="195" y="72" font-size="20" font-weight="700" fill="#221E1B" text-anchor="middle">個人檔案</text>
 <text x="374" y="72" font-size="15" font-weight="500" fill="#C9402F" text-anchor="end">設定</text>
+</g>
+<g id="個人檔案上方">
+<g id="頭像 A">
 <circle cx="195" cy="180" r="47" fill="none" stroke="#C9402F" stroke-width="1.5" opacity="0.45"/>
 <circle cx="195" cy="180" r="44" fill="#F8DDD6"/>
 <text x="195" y="194.96" font-size="39" font-weight="700" fill="#6B1E14" text-anchor="middle">A</text>
+</g>
 <text x="195" y="252" font-size="21" font-weight="800" fill="#221E1B" text-anchor="middle">Alice 林</text>
 <rect x="110" y="266" width="52" height="24" rx="12" fill="#C9402F"/>
 <text x="136.0" y="283" font-size="12" font-weight="800" fill="#FFFFFF" text-anchor="middle">Lv.3</text>
@@ -34,14 +41,20 @@
 <text x="38" y="334" font-size="14" font-weight="400" fill="#221E1B" text-anchor="start">一句話讓大家認識你</text>
 <text x="352" y="334" font-size="15" font-weight="500" fill="#C9402F" text-anchor="end">編輯</text>
 <text x="195" y="374" font-size="12" font-weight="400" fill="#8A8178" text-anchor="middle">alice@test.com</text>
+</g>
+<g id="統計與成就">
+<g id="卡片底">
 <rect x="16.5" y="386.5" width="357" height="69" rx="18" fill="#FFFFFF" stroke="#E9E1D6" stroke-width="1"/>
+</g>
 <text x="75.66666666666666" y="420" font-size="20" font-weight="800" fill="#221E1B" text-anchor="middle">1</text>
 <text x="75.66666666666666" y="440" font-size="12.5" font-weight="400" fill="#8A8178" text-anchor="middle">作品</text>
 <text x="194.96666666666664" y="420" font-size="20" font-weight="800" fill="#221E1B" text-anchor="middle">0</text>
 <text x="194.96666666666664" y="440" font-size="12.5" font-weight="400" fill="#8A8178" text-anchor="middle">粉絲</text>
 <text x="314.26666666666665" y="420" font-size="20" font-weight="800" fill="#221E1B" text-anchor="middle">1</text>
 <text x="314.26666666666665" y="440" font-size="12.5" font-weight="400" fill="#8A8178" text-anchor="middle">追蹤中</text>
+<g id="卡片底">
 <rect x="16.5" y="472.5" width="357" height="195" rx="18" fill="#FFFFFF" stroke="#E9E1D6" stroke-width="1"/>
+</g>
 <text x="32" y="502" font-size="15" font-weight="800" fill="#221E1B" text-anchor="start">成就  1 / 6</text>
 <rect x="30" y="518" width="158" height="42" rx="12" fill="#F8DDD6" opacity="1"/>
 <text x="40" y="536" font-size="13" font-weight="800" fill="#221E1B" text-anchor="start" opacity="1">初次發布</text>
@@ -61,62 +74,97 @@
 <rect x="198" y="614" width="158" height="42" rx="12" fill="#F3E9DD" opacity="0.6"/>
 <text x="208" y="632" font-size="13" font-weight="800" fill="#221E1B" text-anchor="start" opacity="0.55">社群之友</text>
 <text x="208" y="648" font-size="11" font-weight="400" fill="#5C544C" text-anchor="start" opacity="0.55">追蹤 10 位創作者</text>
+</g>
+<g id="分段切換">
 <rect x="16" y="686" width="358" height="38" rx="19.0" fill="#F3E9DD"/>
 <text x="78.33333333333334" y="710.0" font-size="14" font-weight="500" fill="#8A8178" text-anchor="middle">作品</text>
 <rect x="136.66666666666669" y="690" width="116.66666666666667" height="30" rx="15.0" fill="#FFFFFF"/>
 <rect x="136.66666666666669" y="690" width="116.66666666666667" height="30" rx="15.0" fill="none"/>
 <text x="195.00000000000003" y="710.0" font-size="14" font-weight="700" fill="#221E1B" text-anchor="middle">收藏</text>
 <text x="311.6666666666667" y="710.0" font-size="14" font-weight="500" fill="#8A8178" text-anchor="middle">委託</text>
+</g>
+<g id="作品小卡 窗邊的靜物">
+<g id="卡片底">
 <rect x="8.5" y="740.5" width="182" height="241" rx="16" fill="#FFFFFF" stroke="#E9E1D6" stroke-width="1"/>
+</g>
+<g id="作品圖（佔位）">
 <g clip-path="url(#profile_collections-c2)">
 <rect x="8" y="740" width="183" height="186" rx="0" fill="url(#profile_collections-g1)"/>
 <circle cx="139.76" cy="792.08" r="23.79" fill="#FFFFFF" opacity="0.55"/>
 <path d="M8 873.92 Q62.9 833.0 108.65 866.48 T191 851.6 V926 H8 Z" fill="#FFFFFF" opacity="0.28"/>
 <path d="M8 899.96 Q72.05 870.2 136.1 896.24 T191 885.08 V926 H8 Z" fill="#221E1B" opacity="0.18"/>
 </g>
+</g>
 <rect x="9" y="909.5" width="181" height="17.5" rx="0" fill="#FFFFFF"/>
 <text x="18" y="936" font-size="14" font-weight="700" fill="#221E1B" text-anchor="start">窗邊的靜物</text>
+<g id="頭像 B">
 <circle cx="28" cy="960" r="10" fill="#F8DDD6"/>
 <text x="28" y="963.4" font-size="9" font-weight="700" fill="#6B1E14" text-anchor="middle">B</text>
+</g>
 <text x="44" y="964" font-size="12" font-weight="400" fill="#8A8178" text-anchor="start">Bob 陳</text>
 <text x="181" y="964" font-size="12" font-weight="400" fill="#8A8178" text-anchor="end">讚 3</text>
+</g>
+<g id="作品小卡 海邊速寫">
+<g id="卡片底">
 <rect x="199.5" y="740.5" width="182" height="191" rx="16" fill="#FFFFFF" stroke="#E9E1D6" stroke-width="1"/>
+</g>
+<g id="作品圖（佔位）">
 <g clip-path="url(#profile_collections-c4)">
 <rect x="199" y="740" width="183" height="136" rx="0" fill="url(#profile_collections-g3)"/>
 <circle cx="330.76" cy="778.08" r="17.68" fill="#FFFFFF" opacity="0.55"/>
 <path d="M199 837.92 Q253.9 808.0 299.65 832.48 T382 821.6 V876 H199 Z" fill="#FFFFFF" opacity="0.28"/>
 <path d="M199 856.96 Q263.05 835.2 327.1 854.24 T382 846.08 V876 H199 Z" fill="#221E1B" opacity="0.18"/>
 </g>
+</g>
 <rect x="200" y="859.5" width="181" height="17.5" rx="0" fill="#FFFFFF"/>
 <text x="209" y="886" font-size="14" font-weight="700" fill="#221E1B" text-anchor="start">海邊速寫</text>
+<g id="頭像 C">
 <circle cx="219" cy="910" r="10" fill="#F8DDD6"/>
 <text x="219" y="913.4" font-size="9" font-weight="700" fill="#6B1E14" text-anchor="middle">C</text>
+</g>
 <text x="235" y="914" font-size="12" font-weight="400" fill="#8A8178" text-anchor="start">Carol 王</text>
 <text x="372" y="914" font-size="12" font-weight="400" fill="#8A8178" text-anchor="end">讚 1</text>
+</g>
+<g id="作品小卡 原創角色設定">
+<g id="卡片底">
 <rect x="199.5" y="940.5" width="182" height="201" rx="16" fill="#FFFFFF" stroke="#E9E1D6" stroke-width="1"/>
+</g>
+<g id="作品圖（佔位）">
 <g clip-path="url(#profile_collections-c6)">
 <rect x="199" y="940" width="183" height="146" rx="0" fill="url(#profile_collections-g5)"/>
 <circle cx="330.76" cy="980.88" r="18.98" fill="#FFFFFF" opacity="0.55"/>
 <path d="M199 1045.12 Q253.9 1013.0 299.65 1039.28 T382 1027.6 V1086 H199 Z" fill="#FFFFFF" opacity="0.28"/>
 <path d="M199 1065.56 Q263.05 1042.2 327.1 1062.64 T382 1053.88 V1086 H199 Z" fill="#221E1B" opacity="0.18"/>
 </g>
+</g>
 <rect x="200" y="1069.5" width="181" height="17.5" rx="0" fill="#FFFFFF"/>
 <text x="209" y="1096" font-size="14" font-weight="700" fill="#221E1B" text-anchor="start">原創角色設定</text>
+<g id="頭像 C">
 <circle cx="219" cy="1120" r="10" fill="#F8DDD6"/>
 <text x="219" y="1123.4" font-size="9" font-weight="700" fill="#6B1E14" text-anchor="middle">C</text>
+</g>
 <text x="235" y="1124" font-size="12" font-weight="400" fill="#8A8178" text-anchor="start">Carol 王</text>
 <text x="372" y="1124" font-size="12" font-weight="400" fill="#8A8178" text-anchor="end">讚 2</text>
+</g>
+<g id="作品小卡 玫瑰習作">
+<g id="卡片底">
 <rect x="8.5" y="990.5" width="182" height="231" rx="16" fill="#FFFFFF" stroke="#E9E1D6" stroke-width="1"/>
+</g>
+<g id="作品圖（佔位）">
 <g clip-path="url(#profile_collections-c8)">
 <rect x="8" y="990" width="183" height="176" rx="0" fill="url(#profile_collections-g7)"/>
 <circle cx="139.76" cy="1039.28" r="22.880000000000003" fill="#FFFFFF" opacity="0.55"/>
 <path d="M8 1116.72 Q62.9 1078.0 108.65 1109.68 T191 1095.6 V1166 H8 Z" fill="#FFFFFF" opacity="0.28"/>
 <path d="M8 1141.36 Q72.05 1113.2 136.1 1137.84 T191 1127.28 V1166 H8 Z" fill="#221E1B" opacity="0.18"/>
 </g>
+</g>
 <rect x="9" y="1149.5" width="181" height="17.5" rx="0" fill="#FFFFFF"/>
 <text x="18" y="1176" font-size="14" font-weight="700" fill="#221E1B" text-anchor="start">玫瑰習作</text>
+<g id="頭像 B">
 <circle cx="28" cy="1200" r="10" fill="#F8DDD6"/>
 <text x="28" y="1203.4" font-size="9" font-weight="700" fill="#6B1E14" text-anchor="middle">B</text>
+</g>
 <text x="44" y="1204" font-size="12" font-weight="400" fill="#8A8178" text-anchor="start">Bob 陳</text>
 <text x="181" y="1204" font-size="12" font-weight="400" fill="#8A8178" text-anchor="end">讚 0</text>
+</g>
 </svg>

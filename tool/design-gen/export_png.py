@@ -1,6 +1,6 @@
 """Exports every SVG in design/svg to a 2x PNG in design/png using headless Chrome.
 
-Run after build.py:  python3 design/build/export_png.py
+Run after build.py:  python3 tool/design-gen/export_png.py
 """
 import os
 import re
@@ -8,7 +8,7 @@ import subprocess
 import tempfile
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-OUT = os.path.abspath(os.path.join(HERE, '..'))
+OUT = os.path.abspath(os.path.join(HERE, '..', '..', 'design'))
 CHROME = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
 SCALE = 2
 

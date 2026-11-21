@@ -7,7 +7,7 @@ from screens_existing import new, home_header, composer, grid_posts, grid_card
 # ---- shared overlays ---------------------------------------------------------
 
 def overlay(c, a=0.42):
-    c.rect(0, 0, 390, c.h, INK, op=a)
+    c.rect(0, 0, 390, c.h, INK, op=a, name='遮罩')
 
 
 def dialog(c, title, body=None, actions=('取消', '確定'), extra=0):
@@ -18,7 +18,7 @@ def dialog(c, title, body=None, actions=('取消', '確定'), extra=0):
     body_h = len(lines) * 21 + 14 if lines else 14
     h = 24 + 28 + body_h + extra + 20 + 40 + 6
     y = (844 - h) / 2 - 24
-    c.rect(x, y, w, h, WHITE, rx=28, name='dialog')
+    c.rect(x, y, w, h, WHITE, rx=28, name='彈窗底')
     c.text(x + 24, y + 48, title, 20, 700)
     for i, ln in enumerate(lines):
         c.text(x + 24, y + 78 + i * 21, ln, 14, 400, SOFT)

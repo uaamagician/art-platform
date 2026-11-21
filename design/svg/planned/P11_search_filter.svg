@@ -11,6 +11,7 @@
 <clipPath id="p_search_filter-c8"><rect x="203" y="534" width="171" height="190" rx="16"/></clipPath></defs>
 <rect x="0" y="0" width="760" height="844" rx="0" fill="#ECE5DB" id="canvas"/>
 <rect x="0" y="0" width="390" height="844" rx="0" fill="#F8F4EE" id="background"/>
+<g id="狀態列">
 <text x="24" y="28" font-size="15" font-weight="600" fill="#221E1B" text-anchor="start">9:41</text>
 <rect x="284" y="20" width="3" height="6" rx="1" fill="#221E1B"/>
 <rect x="289" y="17" width="3" height="9" rx="1" fill="#221E1B"/>
@@ -21,59 +22,84 @@
 <rect x="332" y="14" width="24" height="12" rx="3.5" fill="none" stroke="#221E1B" stroke-width="1.2" opacity="0.9"/>
 <rect x="334" y="16" width="17" height="8" rx="2" fill="#221E1B"/>
 <rect x="357" y="18" width="2" height="4" rx="1" fill="#221E1B"/>
+</g>
+<g id="頂部標題列 #水彩畫">
 <path d="M30 74 L21 65 L30 56" fill="none" stroke="#221E1B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
 <text x="195" y="72" font-size="20" font-weight="700" fill="#221E1B" text-anchor="middle">#水彩畫</text>
+</g>
+<g id="分段切換">
 <rect x="16" y="108" width="358" height="38" rx="19.0" fill="#F3E9DD"/>
 <rect x="20.0" y="112" width="116.66666666666667" height="30" rx="15.0" fill="#FFFFFF"/>
 <rect x="20.0" y="112" width="116.66666666666667" height="30" rx="15.0" fill="none"/>
 <text x="78.33333333333334" y="132.0" font-size="14" font-weight="700" fill="#221E1B" text-anchor="middle">關聯性</text>
 <text x="195.00000000000003" y="132.0" font-size="14" font-weight="500" fill="#8A8178" text-anchor="middle">最新</text>
 <text x="311.6666666666667" y="132.0" font-size="14" font-weight="500" fill="#8A8178" text-anchor="middle">評價</text>
+</g>
+<g id="標籤 分類 ▾">
 <rect x="16" y="160" width="63.05" height="32" rx="16.0" fill="#F8DDD6"/>
 <text x="47.525" y="180.68" font-size="13" font-weight="600" fill="#221E1B" text-anchor="middle">分類 ▾</text>
+</g>
+<g id="標籤 媒材 ▾">
 <rect x="87.05" y="160" width="63.05" height="32" rx="16.0" fill="#FFFFFF"/>
 <text x="118.57499999999999" y="180.68" font-size="13" font-weight="400" fill="#221E1B" text-anchor="middle">媒材 ▾</text>
+</g>
+<g id="標籤 含 AI">
 <rect x="158.1" y="160" width="59.02" height="32" rx="16.0" fill="#FFFFFF"/>
 <text x="187.60999999999999" y="180.68" font-size="13" font-weight="400" fill="#221E1B" text-anchor="middle">含 AI</text>
+</g>
+<g id="標籤 含成人">
 <rect x="225.12" y="160" width="65.0" height="32" rx="16.0" fill="#FFFFFF"/>
 <text x="257.62" y="180.68" font-size="13" font-weight="400" fill="#221E1B" text-anchor="middle">含成人</text>
+</g>
 <text x="16" y="226" font-size="15" font-weight="800" fill="#221E1B" text-anchor="start">創作者</text>
+<g id="頭像 B">
 <circle cx="40" cy="262" r="22" fill="#F8DDD6"/>
 <text x="40" y="269.48" font-size="19" font-weight="700" fill="#6B1E14" text-anchor="middle">B</text>
+</g>
 <text x="70" y="266" font-size="13" font-weight="600" fill="#221E1B" text-anchor="start">Bob 陳</text>
+<g id="頭像 C">
 <circle cx="160" cy="262" r="22" fill="#F8DDD6"/>
 <text x="160" y="269.48" font-size="19" font-weight="700" fill="#6B1E14" text-anchor="middle">C</text>
+</g>
 <text x="190" y="266" font-size="13" font-weight="600" fill="#221E1B" text-anchor="start">Carol 王</text>
 <text x="16" y="322" font-size="15" font-weight="800" fill="#221E1B" text-anchor="start">作品</text>
+<g id="作品圖（佔位）">
 <g clip-path="url(#p_search_filter-c2)">
 <rect x="16" y="336" width="171" height="190" rx="0" fill="url(#p_search_filter-g1)"/>
 <circle cx="139.12" cy="389.2" r="22.23" fill="#FFFFFF" opacity="0.55"/>
 <path d="M16 472.79999999999995 Q67.3 431.0 110.05000000000001 465.20000000000005 T187 450.0 V526 H16 Z" fill="#FFFFFF" opacity="0.28"/>
 <path d="M16 499.4 Q75.85 469.0 135.7 495.6 T187 484.20000000000005 V526 H16 Z" fill="#221E1B" opacity="0.18"/>
 </g>
+</g>
 <text x="20" y="546" font-size="13" font-weight="700" fill="#221E1B" text-anchor="start">雨後街景</text>
 <text x="20" y="564" font-size="11" font-weight="400" fill="#8A8178" text-anchor="start">讚 12</text>
+<g id="作品圖（佔位）">
 <g clip-path="url(#p_search_filter-c4)">
 <rect x="203" y="336" width="171" height="150" rx="0" fill="url(#p_search_filter-g3)"/>
 <circle cx="326.12" cy="378.0" r="19.5" fill="#FFFFFF" opacity="0.55"/>
 <path d="M203 444.0 Q254.3 411.0 297.05 438.0 T374 426.0 V486 H203 Z" fill="#FFFFFF" opacity="0.28"/>
 <path d="M203 465.0 Q262.85 441.0 322.7 462.0 T374 453.0 V486 H203 Z" fill="#221E1B" opacity="0.18"/>
 </g>
+</g>
 <text x="207" y="506" font-size="13" font-weight="700" fill="#221E1B" text-anchor="start">春日山徑</text>
 <text x="207" y="524" font-size="11" font-weight="400" fill="#8A8178" text-anchor="start">讚 8</text>
+<g id="作品圖（佔位）">
 <g clip-path="url(#p_search_filter-c6)">
 <rect x="16" y="574" width="171" height="150" rx="0" fill="url(#p_search_filter-g5)"/>
 <circle cx="139.12" cy="616.0" r="19.5" fill="#FFFFFF" opacity="0.55"/>
 <path d="M16 682.0 Q67.3 649.0 110.05000000000001 676.0 T187 664.0 V724 H16 Z" fill="#FFFFFF" opacity="0.28"/>
 <path d="M16 703.0 Q75.85 679.0 135.7 700.0 T187 691.0 V724 H16 Z" fill="#221E1B" opacity="0.18"/>
 </g>
+</g>
 <text x="20" y="744" font-size="13" font-weight="700" fill="#221E1B" text-anchor="start">水彩練習</text>
 <text x="20" y="762" font-size="11" font-weight="400" fill="#8A8178" text-anchor="start">讚 5</text>
+<g id="作品圖（佔位）">
 <g clip-path="url(#p_search_filter-c8)">
 <rect x="203" y="534" width="171" height="190" rx="0" fill="url(#p_search_filter-g7)"/>
 <circle cx="326.12" cy="587.2" r="22.23" fill="#FFFFFF" opacity="0.55"/>
 <path d="M203 670.8 Q254.3 629.0 297.05 663.2 T374 648.0 V724 H203 Z" fill="#FFFFFF" opacity="0.28"/>
 <path d="M203 697.4 Q262.85 667.0 322.7 693.6 T374 682.2 V724 H203 Z" fill="#221E1B" opacity="0.18"/>
+</g>
 </g>
 <text x="207" y="744" font-size="13" font-weight="700" fill="#221E1B" text-anchor="start">花與窗</text>
 <text x="207" y="762" font-size="11" font-weight="400" fill="#8A8178" text-anchor="start">讚 3</text>
@@ -86,10 +112,10 @@
 <circle cx="10" cy="760" r="11" fill="#C9402F"/>
 <text x="10" y="764.5" font-size="12" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
 <rect x="410" y="60" width="330" height="744" rx="20" fill="#FFFFFF" stroke="#E9E1D6" stroke-width="1"/>
-<rect x="430" y="82" width="61.0" height="26" rx="13" fill="#C9402F"/>
-<text x="441" y="100" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="start">待實現</text>
+<rect x="430" y="82" width="113.0" height="26" rx="13" fill="#C9402F"/>
+<text x="441" y="100" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="start">草稿，僅供參考</text>
 <text x="430" y="140" font-size="20" font-weight="800" fill="#221E1B" text-anchor="start">搜尋排序與篩選</text>
-<text x="430" y="164" font-size="13" font-weight="500" fill="#8A8178" text-anchor="start">負責：許鈞棠（探索與搜尋）</text>
+<text x="430" y="164" font-size="13" font-weight="500" fill="#8A8178" text-anchor="start">可能的負責人：許鈞棠（探索與搜尋）</text>
 <line x1="430" y1="180" x2="720" y2="180" stroke="#E9E1D6" stroke-width="1" stroke-linecap="round"/>
 <circle cx="440" cy="203" r="11" fill="#F8DDD6"/>
 <text x="440" y="207.5" font-size="12" font-weight="700" fill="#6B1E14" text-anchor="middle">1</text>

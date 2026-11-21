@@ -607,3 +607,19 @@ EXISTING = [
     ('19_settings', '設定', settings, '成人／AI 內容預設隱藏'),
     ('20_filter_sheet', '內容篩選面板', filter_sheet, '主頁右上「篩選」開啟'),
 ]
+
+
+# name the page-level pieces too
+for _n, _label in {
+    'home_header': '主頁上方分頁',
+    'feed_card': lambda a, k: '貼文卡片 ' + str(a[3] if len(a) > 3 else ''),
+    'search_field': '搜尋列',
+    'explore_top': '探索上方（搜尋＋分頁）',
+    'composer': '底部輸入列',
+    'commission_card': lambda a, k: '委託卡片 ' + str(a[2] if len(a) > 2 else ''),
+    'dark_pill': '黑色浮動按鈕',
+    'profile_header': '個人檔案上方',
+    'stats_and_achievements': '統計與成就',
+    'grid_card': lambda a, k: '作品小卡 ' + str(a[5] if len(a) > 5 else ''),
+}.items():
+    globals()[_n] = named(_label)(globals()[_n])
