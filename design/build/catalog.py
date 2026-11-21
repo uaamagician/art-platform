@@ -1,0 +1,67 @@
+"""Order and grouping of every implemented screen. Numbers are assigned from this order."""
+import screens_existing as E
+import screens_more as M
+
+# (section title, [(slug, title, builder, note)])
+SECTIONS = [
+    ('登入與主頁', [
+        ('login', '登入', E.login, '訪客只有在發布、按讚、追蹤、留言時才會被帶到這頁'),
+        ('home_recommend', '主頁：推薦', E.home_recommend, '依你的作品、按讚、收藏的標籤排序；左右滑可切到「追蹤中」'),
+        ('home_following_guest', '主頁：追蹤中（訪客）', E.home_following_guest, '登入後顯示追蹤對象的最新作品'),
+        ('home_following_empty', '主頁：追蹤中（沒有追蹤）', M.home_following_empty, '已登入但還沒追蹤任何人'),
+        ('home_loading', '主頁：載入中', M.home_loading, '骨架畫面，會閃爍'),
+        ('load_error', '讀取失敗', M.load_error, '所有清單頁共用，按「重試」重新載入'),
+        ('filter_sheet', '內容篩選面板', E.filter_sheet, '主頁右上「篩選」開啟'),
+    ]),
+    ('作品', [
+        ('post_detail', '作品詳情', E.post_detail, '多圖輪播、按讚／收藏／分享、留言、作者可編輯刪除'),
+        ('image_viewer', '圖片檢視', M.image_viewer, '點作品圖開啟，可縮放、左右滑'),
+        ('post_menu_owner', '作品選單（作者）', M.post_menu_owner, '右上「更多」；編輯或刪除自己的作品'),
+        ('post_menu_other', '作品選單（他人）', M.post_menu_other, '只有檢舉'),
+        ('report_sheet', '檢舉原因', M.report_sheet, '作品與委託共用，同一人對同一內容只能檢舉一次'),
+        ('post_delete_dialog', '刪除作品確認', M.post_delete_dialog, '連圖片與留言一併刪除'),
+        ('publish', '發布作品（全長）', E.publish, '最多 10 張圖、附件、標籤、成人／AI 兩題必答；此圖為捲動後的全長'),
+        ('image_source_sheet', '選擇圖片來源', M.image_source_sheet, '點「新增圖片」開啟'),
+        ('edit_post', '編輯作品', M.edit_post, '只能改文字與標籤；圖片與安全標籤發布後不能改'),
+    ]),
+    ('探索與搜尋', [
+        ('explore_categories', '探索：分類', E.explore_categories, '搜尋列、熱門標籤、四個分頁'),
+        ('category_posts', '分類作品列表', M.category_posts, '點分類進入，兩欄瀑布流'),
+        ('search_results', '搜尋結果', M.search_results, '創作者＋作品；以 # 開頭只搜標籤'),
+        ('search_empty', '搜尋：沒有結果', M.search_empty, '被內容篩選隱藏時會提示數量'),
+        ('explore_creators', '探索：創作者名錄', E.explore_creators, '依作品數排序，可直接追蹤'),
+        ('commission_list', '探索：委託', E.commission_list, '委託需求／接單展示，3 次檢舉自動隱藏'),
+        ('disclaimer_dialog', '免責聲明', M.disclaimer_dialog, '委託頁「免責聲明」開啟'),
+        ('commission_detail', '委託詳情（他人）', E.commission_detail, '站外聯絡方式、免責聲明、檢舉'),
+        ('commission_detail_owner', '委託詳情（本人）', M.commission_detail_owner, '本人可結案／重新開放、刪除'),
+        ('commission_delete_dialog', '刪除委託確認', M.commission_delete_dialog, ''),
+        ('commission_form', '發布委託（全長）', E.commission_form, '必填聯絡方式、需同意免責聲明、成人內容題必答'),
+        ('consult_list', '探索：改圖諮詢', E.consult_list, '發布者開放他人用圖片或文字回覆'),
+        ('consult_create', '發布改圖諮詢', M.consult_create, '先選一件自己的作品，再寫標題'),
+        ('consult_detail', '改圖諮詢詳情（蓋樓）', E.consult_detail, '樓層編號固定，可附圖'),
+    ]),
+    ('群組', [
+        ('group_list', '群組列表', E.group_list, '我的群組／探索群組'),
+        ('group_create_dialog', '建立群組', M.group_create_dialog, '名稱必填、簡介選填'),
+        ('group_chat', '群組聊天室', E.group_chat, '只有群組聊天，沒有一對一私訊'),
+        ('chat_delete_dialog', '刪除訊息確認', M.chat_delete_dialog, '長按訊息'),
+        ('group_board', '共享白板', E.group_board, '即時同步；房主可鎖定、清空、發布為作品'),
+        ('board_clear_dialog', '清空白板確認', M.board_clear_dialog, '只有房主'),
+        ('group_members', '群組成員（一般成員）', E.group_members, '一般成員可退出'),
+        ('group_members_owner', '群組成員（房主）', M.group_members_owner, '房主可移出成員、解散群組'),
+        ('member_kick_dialog', '移出成員確認', M.member_kick_dialog, ''),
+        ('group_dissolve_dialog', '解散群組確認', M.group_dissolve_dialog, ''),
+    ]),
+    ('個人中心', [
+        ('my_profile', '個人檔案（本人）', E.my_profile, '等級（不顯示經驗值）、成就；下方三個分頁'),
+        ('profile_collections', '個人檔案：收藏分頁', M.profile_collections, '捲動後的全長'),
+        ('profile_commissions', '個人檔案：委託分頁', M.profile_commissions, '捲動後的全長'),
+        ('edit_bio_dialog', '編輯自我介紹', M.edit_bio_dialog, '最多 40 字；點簡介旁「編輯」'),
+        ('follow_followers', '粉絲列表', M.follow_followers, '點「粉絲」數字進入，可直接追蹤'),
+        ('follow_following', '追蹤中列表', M.follow_following, '點「追蹤中」數字進入'),
+        ('follow_empty', '列表：沒有資料', M.follow_empty, ''),
+        ('user_profile', '個人檔案（他人）', E.user_profile, '追蹤、粉絲列表、作品'),
+        ('settings', '設定', E.settings, '成人／AI 內容預設隱藏'),
+        ('logout_dialog', '登出確認', M.logout_dialog, ''),
+    ]),
+]

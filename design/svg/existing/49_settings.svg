@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="844" viewBox="0 0 390 844" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif">
+<defs><filter id="settings-sh" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#221E1B" flood-opacity="0.07"/></filter>
+<filter id="settings-sh2" x="-30%" y="-30%" width="160%" height="180%"><feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#C9402F" flood-opacity="0.35"/></filter></defs>
+<rect x="0" y="0" width="390" height="844" rx="0" fill="#F8F4EE" id="background"/>
+<text x="24" y="28" font-size="15" font-weight="600" fill="#221E1B" text-anchor="start">9:41</text>
+<rect x="284" y="20" width="3" height="6" rx="1" fill="#221E1B"/>
+<rect x="289" y="17" width="3" height="9" rx="1" fill="#221E1B"/>
+<rect x="294" y="14" width="3" height="12" rx="1" fill="#221E1B"/>
+<path d="M306 20 Q313 13 320 20" fill="none" stroke="#221E1B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M309 23 Q313 19 317 23" fill="none" stroke="#221E1B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="313" cy="26" r="1.6" fill="#221E1B"/>
+<rect x="332" y="14" width="24" height="12" rx="3.5" fill="none" stroke="#221E1B" stroke-width="1.2" opacity="0.9"/>
+<rect x="334" y="16" width="17" height="8" rx="2" fill="#221E1B"/>
+<rect x="357" y="18" width="2" height="4" rx="1" fill="#221E1B"/>
+<path d="M30 74 L21 65 L30 56" fill="none" stroke="#221E1B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="195" y="72" font-size="20" font-weight="700" fill="#221E1B" text-anchor="middle">設定</text>
+<text x="20" y="130" font-size="15" font-weight="800" fill="#221E1B" text-anchor="start">內容設定</text>
+<rect x="16.5" y="146.5" width="357" height="149" rx="18" fill="#FFFFFF" stroke="#E9E1D6" stroke-width="1"/>
+<text x="32" y="184" font-size="15" font-weight="400" fill="#221E1B" text-anchor="start">顯示成人內容（NSFW）</text>
+<text x="32" y="204" font-size="12" font-weight="400" fill="#8A8178" text-anchor="start">預設隱藏</text>
+<rect x="310" y="178" width="48" height="28" rx="14" fill="#EFE6DC" stroke="#8A8178" stroke-width="1.5"/>
+<circle cx="324" cy="192" r="7" fill="#8A8178"/>
+<line x1="32" y1="226" x2="358" y2="226" stroke="#E9E1D6" stroke-width="1" stroke-linecap="round"/>
+<text x="32" y="258" font-size="15" font-weight="400" fill="#221E1B" text-anchor="start">顯示 AI 生成內容</text>
+<text x="32" y="278" font-size="12" font-weight="400" fill="#8A8178" text-anchor="start">預設隱藏</text>
+<rect x="310" y="252" width="48" height="28" rx="14" fill="#EFE6DC" stroke="#8A8178" stroke-width="1.5"/>
+<circle cx="324" cy="266" r="7" fill="#8A8178"/>
+<text x="20" y="336" font-size="15" font-weight="800" fill="#221E1B" text-anchor="start">帳號</text>
+<rect x="16.5" y="352.5" width="357" height="125" rx="18" fill="#FFFFFF" stroke="#E9E1D6" stroke-width="1"/>
+<text x="32" y="384" font-size="15" font-weight="700" fill="#221E1B" text-anchor="start">Alice 林</text>
+<text x="32" y="404" font-size="13" font-weight="400" fill="#8A8178" text-anchor="start">alice@test.com</text>
+<rect x="32.5" y="420.5" width="99" height="39" rx="14" fill="#FFFFFF" stroke="#E9E1D6" stroke-width="1"/>
+<text x="82.0" y="445.04" font-size="14" font-weight="500" fill="#221E1B" text-anchor="middle">登出</text>
+<text x="20" y="516" font-size="15" font-weight="800" fill="#221E1B" text-anchor="start">關於</text>
+<rect x="16.5" y="532.5" width="357" height="119" rx="18" fill="#FFFFFF" stroke="#E9E1D6" stroke-width="1"/>
+<text x="32" y="562" font-size="13" font-weight="400" fill="#5C544C" text-anchor="start">Art-Platform 是給繪圖創作者的社群：展示作品、</text>
+<text x="32" y="584" font-size="13" font-weight="400" fill="#5C544C" text-anchor="start">追蹤喜歡的創作者、在群組裡一起畫畫聊天，也能</text>
+<text x="32" y="606" font-size="13" font-weight="400" fill="#5C544C" text-anchor="start">在委託專區找到合作對象。</text>
+<text x="20" y="690" font-size="15" font-weight="800" fill="#221E1B" text-anchor="start">委託免責聲明</text>
+<rect x="16.5" y="706.5" width="357" height="111" rx="18" fill="#FFFFFF" stroke="#E9E1D6" stroke-width="1"/>
+<text x="32" y="736" font-size="13" font-weight="400" fill="#5C544C" text-anchor="start">本平台僅提供委託資訊的刊登與展示，不介入雙方的</text>
+<text x="32" y="758" font-size="13" font-weight="400" fill="#5C544C" text-anchor="start">溝通、報價、付款與交付，也不經手任何金流，對雙</text>
+<text x="32" y="780" font-size="13" font-weight="400" fill="#5C544C" text-anchor="start">方於站外交易所產生的糾紛與法律責任概不負責。</text>
+</svg>

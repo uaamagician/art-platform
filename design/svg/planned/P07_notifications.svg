@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="844" viewBox="0 0 760 844" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif">
+<defs><filter id="p_notifications-sh" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#221E1B" flood-opacity="0.07"/></filter>
+<filter id="p_notifications-sh2" x="-30%" y="-30%" width="160%" height="180%"><feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#C9402F" flood-opacity="0.35"/></filter></defs>
+<rect x="0" y="0" width="760" height="844" rx="0" fill="#ECE5DB" id="canvas"/>
+<rect x="0" y="0" width="390" height="844" rx="0" fill="#F8F4EE" id="background"/>
+<text x="24" y="28" font-size="15" font-weight="600" fill="#221E1B" text-anchor="start">9:41</text>
+<rect x="284" y="20" width="3" height="6" rx="1" fill="#221E1B"/>
+<rect x="289" y="17" width="3" height="9" rx="1" fill="#221E1B"/>
+<rect x="294" y="14" width="3" height="12" rx="1" fill="#221E1B"/>
+<path d="M306 20 Q313 13 320 20" fill="none" stroke="#221E1B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M309 23 Q313 19 317 23" fill="none" stroke="#221E1B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="313" cy="26" r="1.6" fill="#221E1B"/>
+<rect x="332" y="14" width="24" height="12" rx="3.5" fill="none" stroke="#221E1B" stroke-width="1.2" opacity="0.9"/>
+<rect x="334" y="16" width="17" height="8" rx="2" fill="#221E1B"/>
+<rect x="357" y="18" width="2" height="4" rx="1" fill="#221E1B"/>
+<text x="195" y="72" font-size="20" font-weight="700" fill="#221E1B" text-anchor="middle">通知</text>
+<rect x="16" y="108" width="358" height="38" rx="19.0" fill="#F3E9DD"/>
+<rect x="20.0" y="112" width="87.5" height="30" rx="15.0" fill="#FFFFFF"/>
+<rect x="20.0" y="112" width="87.5" height="30" rx="15.0" fill="none"/>
+<text x="63.75" y="132.0" font-size="14" font-weight="700" fill="#221E1B" text-anchor="middle">全部</text>
+<text x="151.25" y="132.0" font-size="14" font-weight="500" fill="#8A8178" text-anchor="middle">互動</text>
+<text x="238.75" y="132.0" font-size="14" font-weight="500" fill="#8A8178" text-anchor="middle">追蹤</text>
+<text x="326.25" y="132.0" font-size="14" font-weight="500" fill="#8A8178" text-anchor="middle">系統</text>
+<rect x="16" y="164" width="358" height="74" rx="18" fill="#F8DDD6" opacity="0.5"/>
+<circle cx="46" cy="201" r="22" fill="#F8DDD6"/>
+<text x="46" y="208.48" font-size="19" font-weight="700" fill="#6B1E14" text-anchor="middle">B</text>
+<text x="80" y="196" font-size="14" font-weight="600" fill="#221E1B" text-anchor="start">Bob 陳 讚了你的作品「窗邊的靜物</text>
+<text x="80" y="216" font-size="14" font-weight="600" fill="#221E1B" text-anchor="start">」</text>
+<text x="362" y="186" font-size="11" font-weight="400" fill="#8A8178" text-anchor="end">5 分鐘前</text>
+<circle cx="356" cy="216" r="5" fill="#C9402F"/>
+<rect x="16" y="248" width="358" height="74" rx="18" fill="#F8DDD6" opacity="0.5"/>
+<circle cx="46" cy="285" r="22" fill="#F8DDD6"/>
+<text x="46" y="292.48" font-size="19" font-weight="700" fill="#6B1E14" text-anchor="middle">C</text>
+<text x="80" y="280" font-size="14" font-weight="600" fill="#221E1B" text-anchor="start">Carol 王 回覆了你的改圖諮詢（3 </text>
+<text x="80" y="300" font-size="14" font-weight="600" fill="#221E1B" text-anchor="start">樓）</text>
+<text x="362" y="270" font-size="11" font-weight="400" fill="#8A8178" text-anchor="end">20 分鐘前</text>
+<circle cx="356" cy="300" r="5" fill="#C9402F"/>
+<circle cx="46" cy="369" r="22" fill="#F8DDD6"/>
+<text x="46" y="376.48" font-size="19" font-weight="700" fill="#6B1E14" text-anchor="middle">D</text>
+<text x="80" y="364" font-size="14" font-weight="400" fill="#221E1B" text-anchor="start">Dave 追蹤了你</text>
+<text x="362" y="354" font-size="11" font-weight="400" fill="#8A8178" text-anchor="end">1 小時前</text>
+<circle cx="46" cy="453" r="22" fill="#F8DDD6"/>
+<text x="46" y="460.48" font-size="19" font-weight="700" fill="#6B1E14" text-anchor="middle">藝</text>
+<text x="80" y="448" font-size="14" font-weight="400" fill="#221E1B" text-anchor="start">你升到 Lv.3，解鎖「初次發布」</text>
+<text x="362" y="438" font-size="11" font-weight="400" fill="#8A8178" text-anchor="end">昨天</text>
+<circle cx="46" cy="537" r="22" fill="#F8DDD6"/>
+<text x="46" y="544.48" font-size="19" font-weight="700" fill="#6B1E14" text-anchor="middle">藝</text>
+<text x="80" y="532" font-size="14" font-weight="400" fill="#221E1B" text-anchor="start">你的委託「徵 VTuber 立繪」被檢</text>
+<text x="80" y="552" font-size="14" font-weight="400" fill="#221E1B" text-anchor="start">舉 1 次</text>
+<text x="362" y="522" font-size="11" font-weight="400" fill="#8A8178" text-anchor="end">昨天</text>
+<rect x="0" y="780" width="390" height="64" rx="0" fill="#FFFFFF" id="bottom-nav"/>
+<line x1="0" y1="780.5" x2="390" y2="780.5" stroke="#E9E1D6" stroke-width="1" stroke-linecap="round"/>
+<text x="39" y="812" font-size="14" font-weight="500" fill="#8A8178" text-anchor="middle">探索</text>
+<text x="117" y="812" font-size="14" font-weight="500" fill="#8A8178" text-anchor="middle">群組</text>
+<text x="195" y="812" font-size="14" font-weight="500" fill="#8A8178" text-anchor="middle">主頁</text>
+<rect x="231" y="794" width="84" height="38" rx="19" fill="#C9402F" id="publish-pill"/>
+<rect x="231" y="794" width="84" height="38" rx="19" fill="none" opacity="0"/>
+<text x="273" y="819" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">發布</text>
+<text x="351" y="812" font-size="14" font-weight="700" fill="#221E1B" text-anchor="middle">個人</text>
+<circle cx="351" cy="826" r="2.5" fill="#C9402F"/>
+<rect x="135" y="834" width="120" height="4" rx="2" fill="#221E1B" opacity="0.85"/>
+<circle cx="10" cy="201" r="11" fill="#C9402F"/>
+<text x="10" y="205.5" font-size="12" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
+<circle cx="10" cy="285" r="11" fill="#C9402F"/>
+<text x="10" y="289.5" font-size="12" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
+<circle cx="372" cy="796" r="11" fill="#C9402F"/>
+<text x="372" y="800.5" font-size="12" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
+<circle cx="10" cy="127" r="11" fill="#C9402F"/>
+<text x="10" y="131.5" font-size="12" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
+<rect x="410" y="60" width="330" height="744" rx="20" fill="#FFFFFF" stroke="#E9E1D6" stroke-width="1"/>
+<rect x="430" y="82" width="191.0" height="26" rx="13" fill="#C9402F"/>
+<text x="441" y="100" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="start">待實現（計畫書未列，建議）</text>
+<text x="430" y="140" font-size="20" font-weight="800" fill="#221E1B" text-anchor="start">通知中心</text>
+<text x="430" y="164" font-size="13" font-weight="500" fill="#8A8178" text-anchor="start">負責：仲辰（資料）＋陳亮均（入口）</text>
+<line x1="430" y1="180" x2="720" y2="180" stroke="#E9E1D6" stroke-width="1" stroke-linecap="round"/>
+<circle cx="440" cy="203" r="11" fill="#F8DDD6"/>
+<text x="440" y="207.5" font-size="12" font-weight="700" fill="#6B1E14" text-anchor="middle">1</text>
+<text x="462" y="208" font-size="14" font-weight="700" fill="#221E1B" text-anchor="start">通知來源</text>
+<text x="462" y="228" font-size="14" font-weight="400" fill="#5C544C" text-anchor="start">讚、留言、追蹤、蓋樓、升級、檢舉處理</text>
+<circle cx="440" cy="259" r="11" fill="#F8DDD6"/>
+<text x="440" y="263.5" font-size="12" font-weight="700" fill="#6B1E14" text-anchor="middle">2</text>
+<text x="462" y="264" font-size="14" font-weight="700" fill="#221E1B" text-anchor="start">資料：users/{uid}/notifications</text>
+<text x="462" y="284" font-size="14" font-weight="400" fill="#5C544C" text-anchor="start">誰觸發就由誰寫入（規則要加）</text>
+<circle cx="440" cy="315" r="11" fill="#F8DDD6"/>
+<text x="440" y="319.5" font-size="12" font-weight="700" fill="#6B1E14" text-anchor="middle">3</text>
+<text x="462" y="320" font-size="14" font-weight="700" fill="#221E1B" text-anchor="start">入口</text>
+<text x="462" y="340" font-size="14" font-weight="400" fill="#5C544C" text-anchor="start">個人或主頁右上角紅點；未讀數字</text>
+<circle cx="440" cy="371" r="11" fill="#F8DDD6"/>
+<text x="440" y="375.5" font-size="12" font-weight="700" fill="#6B1E14" text-anchor="middle">4</text>
+<text x="462" y="376" font-size="14" font-weight="700" fill="#221E1B" text-anchor="start">推播（FCM）為選做</text>
+<text x="462" y="396" font-size="14" font-weight="400" fill="#5C544C" text-anchor="start">作業可先做 App 內通知</text>
+</svg>

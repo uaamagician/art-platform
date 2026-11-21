@@ -68,3 +68,6 @@ tool/emulator/node_modules/
 tool/emulator/firestore.rules
 tool/emulator/storage.rules
 tool/emulator/*-debug.log
+
+# design generator
+__pycache__/

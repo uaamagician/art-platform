@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="844" viewBox="0 0 760 844" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif">
+<defs><filter id="p_onboarding-sh" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#221E1B" flood-opacity="0.07"/></filter>
+<filter id="p_onboarding-sh2" x="-30%" y="-30%" width="160%" height="180%"><feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#C9402F" flood-opacity="0.35"/></filter>
+<linearGradient id="p_onboarding-g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#D9D5CF"/><stop offset="1" stop-color="#8E8A84"/></linearGradient>
+<clipPath id="p_onboarding-c2"><rect x="24" y="178" width="342" height="300" rx="16"/></clipPath>
+<mask id="p_onboarding-m3"><rect width="390" height="844" fill="white"/><rect x="231" y="794" width="84" height="38" rx="19" fill="black"/></mask></defs>
+<rect x="0" y="0" width="760" height="844" rx="0" fill="#ECE5DB" id="canvas"/>
+<rect x="0" y="0" width="390" height="844" rx="0" fill="#F8F4EE" id="background"/>
+<text x="24" y="28" font-size="15" font-weight="600" fill="#221E1B" text-anchor="start">9:41</text>
+<rect x="284" y="20" width="3" height="6" rx="1" fill="#221E1B"/>
+<rect x="289" y="17" width="3" height="9" rx="1" fill="#221E1B"/>
+<rect x="294" y="14" width="3" height="12" rx="1" fill="#221E1B"/>
+<path d="M306 20 Q313 13 320 20" fill="none" stroke="#221E1B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M309 23 Q313 19 317 23" fill="none" stroke="#221E1B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="313" cy="26" r="1.6" fill="#221E1B"/>
+<rect x="332" y="14" width="24" height="12" rx="3.5" fill="none" stroke="#221E1B" stroke-width="1.2" opacity="0.9"/>
+<rect x="334" y="16" width="17" height="8" rx="2" fill="#221E1B"/>
+<rect x="357" y="18" width="2" height="4" rx="1" fill="#221E1B"/>
+<rect x="16" y="54" width="28" height="28" rx="6.16" fill="#C9402F"/>
+<text x="30.0" y="74.16" font-size="17" font-weight="800" fill="#FFFFFF" text-anchor="middle">藝</text>
+<text x="166" y="80" font-size="17" font-weight="400" fill="#8A8178" text-anchor="middle">追蹤中</text>
+<text x="232" y="80" font-size="17" font-weight="700" fill="#221E1B" text-anchor="middle">推薦</text>
+<rect x="215.0" y="92" width="34" height="2" rx="0" fill="#C9402F"/>
+<text x="374" y="80" font-size="15" font-weight="500" fill="#C9402F" text-anchor="end">篩選</text>
+<rect x="14.5" y="108.5" width="361" height="519" rx="24" fill="#FFFFFF" stroke="#E9E1D6" stroke-width="1" filter="url(#p_onboarding-sh)"/>
+<circle cx="47" cy="146" r="22" fill="none" stroke="#C9402F" stroke-width="1.5" opacity="0.45"/>
+<circle cx="47" cy="146" r="19" fill="#F8DDD6"/>
+<text x="47" y="152.46" font-size="17" font-weight="700" fill="#6B1E14" text-anchor="middle">B</text>
+<text x="76" y="142" font-size="15" font-weight="700" fill="#221E1B" text-anchor="start">Bob 陳</text>
+<text x="76" y="161" font-size="12.5" font-weight="400" fill="#8A8178" text-anchor="start">素描與水彩，每天一張</text>
+<rect x="300" y="130" width="64" height="32" rx="16.0" fill="#C9402F"/>
+<text x="332.0" y="150.68" font-size="13" font-weight="600" fill="#FFFFFF" text-anchor="middle">追蹤</text>
+<g clip-path="url(#p_onboarding-c2)">
+<rect x="24" y="178" width="342" height="300" rx="0" fill="url(#p_onboarding-g1)"/>
+<circle cx="270.24" cy="262.0" r="39.0" fill="#FFFFFF" opacity="0.55"/>
+<path d="M24 394.0 Q126.6 328.0 212.10000000000002 382.0 T366 358.0 V478 H24 Z" fill="#FFFFFF" opacity="0.28"/>
+<path d="M24 436.0 Q143.7 388.0 263.4 430.0 T366 412.0 V478 H24 Z" fill="#221E1B" opacity="0.18"/>
+</g>
+<rect x="34" y="442" width="68.0" height="26" rx="13" fill="#221E1B" opacity="0.55"/>
+<text x="68.0" y="459" font-size="12" font-weight="500" fill="#FFFFFF" text-anchor="middle">傳統手繪</text>
+<text x="30" y="512" font-size="17" font-weight="700" fill="#221E1B" text-anchor="start">窗邊的靜物</text>
+<text x="30" y="538" font-size="14" font-weight="400" fill="#5C544C" text-anchor="start">用 2B 鉛筆畫了一個下午</text>
+<text x="30" y="564" font-size="13" font-weight="600" fill="#C9402F" text-anchor="start">#鉛筆素描  #靜物</text>
+<rect x="30" y="578" width="76" height="30" rx="15" fill="#F3E9DD"/>
+<text x="68.0" y="598" font-size="13" font-weight="700" fill="#5C544C" text-anchor="middle">讚 3</text>
+<text x="118" y="598" font-size="12.5" font-weight="400" fill="#8A8178" text-anchor="start">留言 0</text>
+<text x="362" y="598" font-size="12.5" font-weight="400" fill="#8A8178" text-anchor="end">5 分鐘前</text>
+<rect x="0" y="780" width="390" height="64" rx="0" fill="#FFFFFF" id="bottom-nav"/>
+<line x1="0" y1="780.5" x2="390" y2="780.5" stroke="#E9E1D6" stroke-width="1" stroke-linecap="round"/>
+<text x="39" y="812" font-size="14" font-weight="500" fill="#8A8178" text-anchor="middle">探索</text>
+<text x="117" y="812" font-size="14" font-weight="500" fill="#8A8178" text-anchor="middle">群組</text>
+<text x="195" y="812" font-size="14" font-weight="700" fill="#221E1B" text-anchor="middle">主頁</text>
+<circle cx="195" cy="826" r="2.5" fill="#C9402F"/>
+<rect x="231" y="794" width="84" height="38" rx="19" fill="#C9402F" id="publish-pill"/>
+<rect x="231" y="794" width="84" height="38" rx="19" fill="none" opacity="0"/>
+<text x="273" y="819" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">發布</text>
+<text x="351" y="812" font-size="14" font-weight="500" fill="#8A8178" text-anchor="middle">個人</text>
+<rect x="135" y="834" width="120" height="4" rx="2" fill="#221E1B" opacity="0.85"/>
+<rect width="390" height="844" fill="#221E1B" opacity="0.62" mask="url(#p_onboarding-m3)"/>
+<rect x="228" y="791" width="90" height="44" rx="22" fill="none" stroke="#FFFFFF" stroke-width="2.5"/>
+<g transform="translate(84 560) scale(1.0) translate(-84 -560)">
+<path d="M34 554 Q28 498 84 496 Q140 498 134 554 Q140 604 122 612 L46 612 Q28 604 34 554 Z" fill="#3A2A25"/>
+<circle cx="84" cy="560" r="42" fill="#FDE8DA"/>
+<path d="M42 552 Q54 516 84 522 Q112 514 126 552 Q104 536 84 538 Q62 536 42 552 Z" fill="#3A2A25"/>
+<path d="M62 562 Q69 552 76 562" fill="none" stroke="#221E1B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M92 562 Q99 552 106 562" fill="none" stroke="#221E1B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="57" cy="576" r="6" fill="#F4A9A0" opacity="0.6"/>
+<circle cx="111" cy="576" r="6" fill="#F4A9A0" opacity="0.6"/>
+<path d="M76 580 Q84 590 92 580" fill="none" stroke="#221E1B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M38 530 Q44 494 88 498 Q136 498 130 530 Q84 518 38 530 Z" fill="#C9402F"/>
+<circle cx="88" cy="494" r="4" fill="#A8301F"/>
+</g>
+<rect x="140" y="470" width="226" height="142" rx="20" fill="#FFFFFF"/>
+<path d="M140 560 L124 572 L140 584 Z" fill="#FFFFFF"/>
+<text x="158" y="504" font-size="15" font-weight="800" fill="#221E1B" text-anchor="start">第一次發布作品</text>
+<text x="158" y="526" font-size="15" font-weight="800" fill="#C9402F" text-anchor="start">只要 3 步驟！</text>
+<text x="158" y="554" font-size="13" font-weight="400" fill="#5C544C" text-anchor="start">① 選圖片</text>
+<text x="158" y="574" font-size="13" font-weight="400" fill="#5C544C" text-anchor="start">② 填標題、選分類</text>
+<text x="158" y="594" font-size="13" font-weight="400" fill="#5C544C" text-anchor="start">③ 回答兩題標籤</text>
+<circle cx="150" cy="640" r="4" fill="#C9402F" opacity="1"/>
+<circle cx="164" cy="640" r="4" fill="#FFFFFF" opacity="0.6"/>
+<circle cx="178" cy="640" r="4" fill="#FFFFFF" opacity="0.6"/>
+<circle cx="192" cy="640" r="4" fill="#FFFFFF" opacity="0.6"/>
+<circle cx="206" cy="640" r="4" fill="#FFFFFF" opacity="0.6"/>
+<text x="256" y="646" font-size="14" font-weight="500" fill="#FFFFFF" text-anchor="end" opacity="0.9">略過</text>
+<rect x="276" y="626" width="90" height="34" rx="17.0" fill="#C9402F"/>
+<text x="321.0" y="647.68" font-size="13" font-weight="600" fill="#FFFFFF" text-anchor="middle">下一步</text>
+<circle cx="84" cy="480" r="11" fill="#C9402F"/>
+<text x="84" y="484.5" font-size="12" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
+<circle cx="312" cy="800" r="11" fill="#C9402F"/>
+<text x="312" y="804.5" font-size="12" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
+<circle cx="360" cy="480" r="11" fill="#C9402F"/>
+<text x="360" y="484.5" font-size="12" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
+<circle cx="268" cy="632" r="11" fill="#C9402F"/>
+<text x="268" y="636.5" font-size="12" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
+<rect x="410" y="60" width="330" height="744" rx="20" fill="#FFFFFF" stroke="#E9E1D6" stroke-width="1"/>
+<rect x="430" y="82" width="61.0" height="26" rx="13" fill="#C9402F"/>
+<text x="441" y="100" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="start">待實現</text>
+<text x="430" y="140" font-size="20" font-weight="800" fill="#221E1B" text-anchor="start">新手導覽（看板娘教學）</text>
+<text x="430" y="164" font-size="13" font-weight="500" fill="#8A8178" text-anchor="start">負責：陳亮均（個人）＋仲辰（導覽觸發）</text>
+<line x1="430" y1="180" x2="720" y2="180" stroke="#E9E1D6" stroke-width="1" stroke-linecap="round"/>
+<circle cx="440" cy="203" r="11" fill="#F8DDD6"/>
+<text x="440" y="207.5" font-size="12" font-weight="700" fill="#6B1E14" text-anchor="middle">1</text>
+<text x="462" y="208" font-size="14" font-weight="700" fill="#221E1B" text-anchor="start">首次登入自動出現，之後可在設定重播</text>
+<text x="462" y="228" font-size="14" font-weight="400" fill="#5C544C" text-anchor="start">users 文件記錄 onboardingDone</text>
+<circle cx="440" cy="259" r="11" fill="#F8DDD6"/>
+<text x="440" y="263.5" font-size="12" font-weight="700" fill="#6B1E14" text-anchor="middle">2</text>
+<text x="462" y="264" font-size="14" font-weight="700" fill="#221E1B" text-anchor="start">每步驟聚光燈高亮一個功能</text>
+<text x="462" y="284" font-size="14" font-weight="400" fill="#5C544C" text-anchor="start">發布 → 追蹤 → 探索 → 群組 → 個人</text>
+<circle cx="440" cy="315" r="11" fill="#F8DDD6"/>
+<text x="440" y="319.5" font-size="12" font-weight="700" fill="#6B1E14" text-anchor="middle">3</text>
+<text x="462" y="320" font-size="14" font-weight="700" fill="#221E1B" text-anchor="start">看板娘台詞與表情</text>
+<text x="462" y="340" font-size="14" font-weight="400" fill="#5C544C" text-anchor="start">由美術／文案提供，程式只負責對話框</text>
+<circle cx="440" cy="371" r="11" fill="#F8DDD6"/>
+<text x="440" y="375.5" font-size="12" font-weight="700" fill="#6B1E14" text-anchor="middle">4</text>
+<text x="462" y="376" font-size="14" font-weight="700" fill="#221E1B" text-anchor="start">可隨時「略過」</text>
+<text x="462" y="396" font-size="14" font-weight="400" fill="#5C544C" text-anchor="start">略過也算完成，不會再次打擾</text>
+</svg>

@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="844" viewBox="0 0 390 844" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif">
+<defs><filter id="explore_creators-sh" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#221E1B" flood-opacity="0.07"/></filter>
+<filter id="explore_creators-sh2" x="-30%" y="-30%" width="160%" height="180%"><feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#C9402F" flood-opacity="0.35"/></filter></defs>
+<rect x="0" y="0" width="390" height="844" rx="0" fill="#F8F4EE" id="background"/>
+<text x="24" y="28" font-size="15" font-weight="600" fill="#221E1B" text-anchor="start">9:41</text>
+<rect x="284" y="20" width="3" height="6" rx="1" fill="#221E1B"/>
+<rect x="289" y="17" width="3" height="9" rx="1" fill="#221E1B"/>
+<rect x="294" y="14" width="3" height="12" rx="1" fill="#221E1B"/>
+<path d="M306 20 Q313 13 320 20" fill="none" stroke="#221E1B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M309 23 Q313 19 317 23" fill="none" stroke="#221E1B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="313" cy="26" r="1.6" fill="#221E1B"/>
+<rect x="332" y="14" width="24" height="12" rx="3.5" fill="none" stroke="#221E1B" stroke-width="1.2" opacity="0.9"/>
+<rect x="334" y="16" width="17" height="8" rx="2" fill="#221E1B"/>
+<rect x="357" y="18" width="2" height="4" rx="1" fill="#221E1B"/>
+<text x="195" y="72" font-size="20" font-weight="700" fill="#221E1B" text-anchor="middle">探索</text>
+<rect x="16.5" y="100.5" width="357" height="47" rx="24" fill="#FFFFFF" stroke="#E9E1D6" stroke-width="1"/>
+<text x="34" y="130" font-size="15" font-weight="400" fill="#8A8178" text-anchor="start">搜尋標題、創作者、#標籤</text>
+<text x="16" y="184" font-size="13" font-weight="800" fill="#221E1B" text-anchor="start">熱門</text>
+<rect x="56" y="168" width="85.15" height="34" rx="17.0" fill="#F3E9DD"/>
+<text x="98.575" y="189.68" font-size="13" font-weight="400" fill="#221E1B" text-anchor="middle">#鉛筆素描</text>
+<rect x="149.15" y="168" width="59.15" height="34" rx="17.0" fill="#F3E9DD"/>
+<text x="178.725" y="189.68" font-size="13" font-weight="400" fill="#221E1B" text-anchor="middle">#靜物</text>
+<rect x="216.3" y="168" width="59.15" height="34" rx="17.0" fill="#F3E9DD"/>
+<text x="245.875" y="189.68" font-size="13" font-weight="400" fill="#221E1B" text-anchor="middle">#電繪</text>
+<rect x="283.45000000000005" y="168" width="85.15" height="34" rx="17.0" fill="#F3E9DD"/>
+<text x="326.02500000000003" y="189.68" font-size="13" font-weight="400" fill="#221E1B" text-anchor="middle">#角色設計</text>
+<rect x="16" y="214" width="358" height="38" rx="19.0" fill="#F3E9DD"/>
+<text x="63.75" y="238.0" font-size="14" font-weight="500" fill="#8A8178" text-anchor="middle">分類</text>
+<rect x="107.5" y="218" width="87.5" height="30" rx="15.0" fill="#FFFFFF"/>
+<rect x="107.5" y="218" width="87.5" height="30" rx="15.0" fill="none"/>
+<text x="151.25" y="238.0" font-size="14" font-weight="700" fill="#221E1B" text-anchor="middle">創作者</text>
+<text x="238.75" y="238.0" font-size="14" font-weight="500" fill="#8A8178" text-anchor="middle">委託</text>
+<text x="326.25" y="238.0" font-size="14" font-weight="500" fill="#8A8178" text-anchor="middle">改圖</text>
+<circle cx="40" cy="298" r="24" fill="#F8DDD6"/>
+<text x="40" y="306.16" font-size="21" font-weight="700" fill="#6B1E14" text-anchor="middle">B</text>
+<text x="76" y="294" font-size="16" font-weight="700" fill="#221E1B" text-anchor="start">Bob 陳</text>
+<text x="76" y="316" font-size="13" font-weight="400" fill="#8A8178" text-anchor="start">素描與水彩，每天一張</text>
+<rect x="300" y="282" width="64" height="32" rx="16.0" fill="#C9402F"/>
+<text x="332.0" y="302.68" font-size="13" font-weight="600" fill="#FFFFFF" text-anchor="middle">追蹤</text>
+<line x1="76" y1="338" x2="390" y2="338" stroke="#E9E1D6" stroke-width="1" stroke-linecap="round"/>
+<circle cx="40" cy="374" r="24" fill="#F8DDD6"/>
+<text x="40" y="382.16" font-size="21" font-weight="700" fill="#6B1E14" text-anchor="middle">C</text>
+<text x="76" y="370" font-size="16" font-weight="700" fill="#221E1B" text-anchor="start">Carol 王</text>
+<text x="76" y="392" font-size="13" font-weight="400" fill="#8A8178" text-anchor="start">角色設計 / 接稿中</text>
+<rect x="300" y="358" width="64" height="32" rx="16.0" fill="#C9402F"/>
+<text x="332.0" y="378.68" font-size="13" font-weight="600" fill="#FFFFFF" text-anchor="middle">追蹤</text>
+<line x1="76" y1="414" x2="390" y2="414" stroke="#E9E1D6" stroke-width="1" stroke-linecap="round"/>
+<circle cx="40" cy="450" r="24" fill="#F8DDD6"/>
+<text x="40" y="458.16" font-size="21" font-weight="700" fill="#6B1E14" text-anchor="middle">A</text>
+<text x="76" y="446" font-size="16" font-weight="700" fill="#221E1B" text-anchor="start">Alice 林</text>
+<text x="76" y="468" font-size="13" font-weight="400" fill="#8A8178" text-anchor="start">一句話讓大家認識你</text>
+<rect x="300" y="434" width="64" height="32" rx="16.0" fill="#C9402F"/>
+<text x="332.0" y="454.68" font-size="13" font-weight="600" fill="#FFFFFF" text-anchor="middle">追蹤</text>
+<line x1="76" y1="490" x2="390" y2="490" stroke="#E9E1D6" stroke-width="1" stroke-linecap="round"/>
+<circle cx="40" cy="526" r="24" fill="#F8DDD6"/>
+<text x="40" y="534.16" font-size="21" font-weight="700" fill="#6B1E14" text-anchor="middle">小</text>
+<text x="76" y="522" font-size="16" font-weight="700" fill="#221E1B" text-anchor="start">小明</text>
+<text x="76" y="544" font-size="13" font-weight="400" fill="#8A8178" text-anchor="start">水墨與書法</text>
+<rect x="300" y="510" width="64" height="32" rx="16.0" fill="#C9402F"/>
+<text x="332.0" y="530.68" font-size="13" font-weight="600" fill="#FFFFFF" text-anchor="middle">追蹤</text>
+<line x1="76" y1="566" x2="390" y2="566" stroke="#E9E1D6" stroke-width="1" stroke-linecap="round"/>
+<rect x="0" y="780" width="390" height="64" rx="0" fill="#FFFFFF" id="bottom-nav"/>
+<line x1="0" y1="780.5" x2="390" y2="780.5" stroke="#E9E1D6" stroke-width="1" stroke-linecap="round"/>
+<text x="39" y="812" font-size="14" font-weight="700" fill="#221E1B" text-anchor="middle">探索</text>
+<circle cx="39" cy="826" r="2.5" fill="#C9402F"/>
+<text x="117" y="812" font-size="14" font-weight="500" fill="#8A8178" text-anchor="middle">群組</text>
+<text x="195" y="812" font-size="14" font-weight="500" fill="#8A8178" text-anchor="middle">主頁</text>
+<rect x="231" y="794" width="84" height="38" rx="19" fill="#C9402F" id="publish-pill"/>
+<rect x="231" y="794" width="84" height="38" rx="19" fill="none" opacity="0"/>
+<text x="273" y="819" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">發布</text>
+<text x="351" y="812" font-size="14" font-weight="500" fill="#8A8178" text-anchor="middle">個人</text>
+<rect x="135" y="834" width="120" height="4" rx="2" fill="#221E1B" opacity="0.85"/>
+</svg>
